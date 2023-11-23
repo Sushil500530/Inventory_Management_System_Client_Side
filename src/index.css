@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-btn {
+    background: linear-gradient(to bottom right, #9c00f6e4, #f600cded);
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: .4s;
+  }
+  .gradient-btn:hover {
+    background-size: 100% 100%;
+  }
