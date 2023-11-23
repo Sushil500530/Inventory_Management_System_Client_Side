@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-const Login = () => {
-    const handleLogin = async (e) => {
+
+import { FaGithub } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
+
+const Register = () => {
+    const handleResister = async (e) => {
         e.preventDefault();
         console.log('button clicked');
     }
@@ -12,8 +14,8 @@ const Login = () => {
                 {/* <img src={imageLogin} alt="" /> */}
             </div>
             <div className="card-body border m-5">
-                <form onSubmit={handleLogin} className="p-5 space-y-3">
-                    <h1 className="text-3xl font-bold mb-12">Please Login🤔</h1>
+                <form onSubmit={handleResister} className="p-5 space-y-3">
+                    <h1 className="text-3xl font-bold mb-12">Please Register Now🤠</h1>
                     <div className="space-y-3">
                         <label className="text-xl  font-medium">Username or Email Address</label>
                         <input type="email" name="email" className="input bg-[#F3F3F3] w-full border-blue-500" id="" placeholder="Enter your username or address" />
@@ -28,8 +30,8 @@ const Login = () => {
                 <div className="w-3/5 mx-auto">
                     <div className="divider text-2xl">Or</div>
                     <div className="space-y-3 mt-6">
-                    <h1 className="flex items-center justify-center py-2 border rounded-full text-3xl ease-in gap-5 hover:bg-[#F2F3F3] cursor-pointer transition hover:text-blue-600"><FcGoogle></FcGoogle> <span className="text-xl font-bold">Sign in With Google</span></h1>
-                    <h1 className="flex items-center justify-center py-2 border rounded-full text-3xl ease-in gap-5 hover:bg-[#F2F3F3] cursor-pointer transition hover:text-blue-600"><FaGithub /> <span className="text-xl font-bold">Sign in With Github</span></h1>
+                        <h1 className="flex items-center justify-center py-2 border rounded-full text-3xl ease-in gap-5 hover:bg-[#F2F3F3] cursor-pointer transition hover:text-blue-600"><FcGoogle></FcGoogle> <span className="text-xl font-bold">Sign in With Google</span></h1>
+                        <h1 className="flex items-center justify-center py-2 border rounded-full text-3xl ease-in gap-5 hover:bg-[#F2F3F3] cursor-pointer transition hover:text-blue-600"><FaGithub /> <span className="text-xl font-bold">Sign in With Github</span></h1>
                     </div>
                 </div>
             </div>
@@ -37,4 +39,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

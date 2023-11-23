@@ -20,7 +20,7 @@ const Navbar = () => {
                             <MenuList address={'/'} linkTitle={'Home'} icon={FaHome} />
                             <MenuList address={'create-shop'} linkTitle={'Create Shop'} icon={FaShopify} />
                             <MenuList address={'login'} linkTitle={'Login'} icon={MdLogin} />
-                            <MenuList address={'resister'} linkTitle={'Resister'} icon={GiArchiveRegister} />
+                            <MenuList address={'register'} linkTitle={'Register'} icon={GiArchiveRegister} />
                         </div>
                     </div>
                 </div>
