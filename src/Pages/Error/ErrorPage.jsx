@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from "../../Hooks/Button/Button";
+import Button from "../../components/Shared/Button/Button";
 import {FaHome} from 'react-icons/fa'
 
 const ErrorPage = () => {

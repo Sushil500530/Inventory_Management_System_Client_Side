@@ -1,8 +1,12 @@
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header/Header";
 
 const MainLayout = () => {
     return (
         <div>
-            <h3 className="text-center text-3xl font-bold">Home Page here</h3>
+          <Header>
+            <Outlet></Outlet>
+          </Header>
         </div>
     );
 };
