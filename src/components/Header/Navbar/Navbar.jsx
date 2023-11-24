@@ -3,9 +3,10 @@ import { GiArchiveRegister } from "react-icons/gi";
 import MenuList from "../../Shared/Menulist/MenuList";
 import { FaHome, FaShopify } from "react-icons/fa";
 import Logo from "./Logo";
+import { MdDashboardCustomize } from "react-icons/md";
 import profile from '../../../assets/image/authentication/profile.png'
 import useAuth from "../../../Hooks/useAuth";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 
@@ -41,9 +42,9 @@ const Navbar = () => {
                            <span >
                            <a href="https://youtu.be/PohSjXM5AW0?si=i0hNC7blRfrCwgz7" target="_blank" >
                             <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <MdOutlineSlideshow className="w-6 h-10 mr-1"></MdOutlineSlideshow>Watch Demo</span>
-                           
                             </a> 
                            </span>
+                           <MenuList address={'dashboard'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />
                             {
                                 user ? <><div className="avatar flex items-center justify-center">
                                     <h3 className="mr-5 font-medium"> {user?.displayName}</h3>
