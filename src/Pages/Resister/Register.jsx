@@ -1,21 +1,56 @@
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
+import loginImage from '../../assets/image/authentication/undraw_secure_files_re_6vdh.svg'
+import { useState } from 'react';
 
 const Register = () => {
-
+    const { createUser, updateUserProfile } = useAuth();
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
     const { register, handleSubmit,
-
         formState: { errors },
     } = useForm();
 
     const handleResister = async (data) => {
         console.log('button clicked', data);
+        setLoading(true)
+        createUser(data?.email, data?.password)
+            .then(result => {
+                updateUserProfile(data?.name, data?.photoURL)
+                    .then(() => {
+                        console.log('user profile updated')
+                        // create user entry in the database 
+                        const userInfo = {
+                            name: data?.name,
+                            email: data?.email
+                        }
+                        console.log(userInfo, result?.user);
+                        // axiosPublic.post('/users', userInfo)
+                        // .then(res => {
+                        //     if(res.data.insertedId){
+                        //         console.log('user added database ---->',res.data);
+                        //         toast.success("Resister Successfully...!") 
+                        //     }
+                        // })
+                    })
+                    .catch(err => console.log(err))
+                if (result?.user) {
+                    setLoading(false)
+                    navigate('/login')
+
+                }
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-5 gap-5">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-7 gap-5">
             <div className="bg-[url('https://i.ibb.co/zF7chZF/Animated-Shape.png')] w-full lg:w-3/5 h-[80vh] bg-no-repeat bg-center bg-cover flex items-center justify-center p-5">
-                {/* <img src={imageLogin} alt="" /> */}
+                <img src={loginImage} alt="" />
             </div>
             <div className="card-body border m-5 w-1/2">
                 <form onSubmit={handleSubmit(handleResister)} className="p-5 space-y-3">
@@ -43,7 +78,9 @@ const Register = () => {
                         )}
                     </div>
                     <p className="text-base font-medium my-8">Please register at first. Go to <Link to='/login' className="text-blue-500 underline">SIGN UP</Link></p>
-                    <button className="btn px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-[18px] font-medium hover:text-white w-full">Sign in</button>
+                    {loading ? <button className="btn px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-[18px] font-medium hover:text-white w-full">Sign in</button> : 
+                       <p> Processing...</p>
+                    }
                 </form>
                 <div className="w-3/5 mx-auto">
                     <div className="divider text-2xl">Or</div>

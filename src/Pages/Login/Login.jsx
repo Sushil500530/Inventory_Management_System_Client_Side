@@ -1,20 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import loginImage from '../../assets/image/authentication/undraw_secure_files_re_6vdh.svg'
+
 const Login = () => {
-
+    const {loginUser} = useAuth();
+    const navigate = useNavigate();
     const { register, handleSubmit,
-
         formState: { errors },
     } = useForm();
-
     const handleLogin = async (data) => {
         console.log('button clicked', data);
+        loginUser(data?.email, data?.password)
+        .then(result => {
+            console.log(result.user);
+            if(result?.user){
+                return navigate(location?.state ? location.state : "/")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
     return (
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-14 gap-5">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-7 gap-5">
             <div className="bg-[url('https://i.ibb.co/zF7chZF/Animated-Shape.png')] w-full min-h-[50vh] lg:w-3/5 lg:h-[80vh] bg-no-repeat bg-center bg-cover flex items-center justify-center p-5">
-                {/* <img src={imageLogin} alt="" /> */}
+                <img src={loginImage} alt="" />
             </div>
             <div className="card-body border m-5 w-1/2">
                 <form onSubmit={handleSubmit(handleLogin)} className="p-5 space-y-3">
