@@ -1,13 +1,14 @@
 import Footer from "../Footer/Footer";
+import Banner from "./Banner/Banner";
+// import Swiper styles
+import 'swiper/css';
 
 const Home = () => {
     return (
-       <div>
-         <div className="w-full h-screen">
-            <h4 className="text-3xl font-bold text-center">Home Is Ready</h4>
+        <div>
+            <Banner />
+            <Footer />
         </div>
-        <Footer />
-       </div>
     );
 };
 

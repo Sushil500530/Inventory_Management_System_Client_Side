@@ -4,13 +4,11 @@ import Container from "../components/Shared/Container";
 
 const MainLayout = () => {
   return (
-    <div>
-      <Container>
+    <Container>
         <Header>
-          <Outlet></Outlet>
+        <Outlet></Outlet>
         </Header>
-      </Container>
-    </div>
+    </Container>
   );
 };
 

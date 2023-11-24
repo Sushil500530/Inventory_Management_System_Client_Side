@@ -10,24 +10,17 @@ import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-    const { user ,logoutUser} = useAuth();
+    const { user, logoutUser } = useAuth();
     console.log(user)
 
     const handleLogout = () => {
         const toastId = toast.loading('logout proccessing....');
         logoutUser()
-        .then(() => {
-            toast.success('Logout successfully....!', {id:toastId});
-            // toast.promise(
-             
-            //      {
-            //        loading: 'Saving...',
-            //        success: <b>Settings saved!</b>,
-            //        error: <b>Could not save.</b>,
-            //      }
-            //    );
-        })
-        .catch(() => {})
+            .then(() => {
+                toast.success('Logout successfully....!', { id: toastId });
+
+            })
+            .catch(() => { })
     }
     return (
         <div className=" w-full dark:bg-zinc-900">
@@ -43,7 +36,12 @@ const Navbar = () => {
                         <div className="flex items-center gap-2 dark:text-white">
                             <MenuList address={'/'} linkTitle={'Home'} icon={FaHome} />
                             <MenuList address={'create-shop'} linkTitle={'Create Shop'} icon={FaShopify} />
-                            <MenuList address={'create-shop'} linkTitle={'Watch Demo'} icon={MdOutlineSlideshow } />
+                           <span >
+                           <a href="https://youtu.be/PohSjXM5AW0?si=i0hNC7blRfrCwgz7" target="_blank" >
+                            <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <MdOutlineSlideshow className="w-6 h-10 mr-1"></MdOutlineSlideshow>Watch Demo</span>
+                           
+                            </a> 
+                           </span>
                             {
                                 user ? <><div className="avatar flex items-center justify-center">
                                     <h3 className="mr-5 font-medium"> {user?.displayName}</h3>
@@ -51,19 +49,19 @@ const Navbar = () => {
                                         {user?.photoURL ? <img src={user?.photoURL} alt="photo" /> : <img src={profile} alt="photo" />}
                                     </div>
                                     <button onClick={handleLogout} className="btn bg-red-500 text-white text-[18px] flex items-center  font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 ">
-                                    Logout
-                                    <MdLogout />
+                                        Logout
+                                        <MdLogout />
                                     </button>
                                 </div>
                                 </>
-                              
+
                                     :
                                     <>
                                         <MenuList address={'login'} linkTitle={'Login'} icon={MdLogin} />
                                         <MenuList address={'register'} linkTitle={'Register'} icon={GiArchiveRegister} />
                                     </>
                             }
-                            
+
 
                         </div>
                     </div>

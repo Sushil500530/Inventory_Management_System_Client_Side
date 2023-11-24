@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const MenuList = ({address,linkTitle, icon:Icon}) => {
     return (
