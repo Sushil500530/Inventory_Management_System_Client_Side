@@ -36,7 +36,7 @@ const Banner = () => {
           <h2 className="absolute z-10 text-8xl opacity-100 right-8 top-10 text-fuchsia-600 font-extrabold text-center">20% OFF</h2>
         </div>
         <div id="slide4" className="carousel-item relative w-full">
-        <BannerSection className="w-full h-full flex items-center" image={image4} title={'Boy Choice Bike....!'} description={'We Are a World-Wide Used Vehicle Exporter of Quality Japanese Cars at Affordable Prices.'}></BannerSection>
+        <BannerSection className="w-full h-full flex items-center" image={image4} title={'Boy Choices Bike....!'} description={'We Are a World-Wide Used Vehicle Exporter of Quality Japanese Cars at Affordable Prices.'}></BannerSection>
           <div className="absolute flex justify-between items-center transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide3" className="btn btn-circle mr-5 text-3xl animate-pulse">❮</a>
             <a href="#slide1" className="btn btn-circle text-3xl animate-pulse">❯</a>

@@ -2,18 +2,18 @@ import Logo from "../../components/Header/Navbar/Logo";
 const Footer = () => {
     return (
         <footer className="footer py-10 bg-base-300 text-base-content">
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full items-center justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full items-center gap-10 lg:gap-4 justify-center px-8">
                 <nav>
                     <Logo />
                 </nav>
-                <nav className="flex flex-col">
+                <nav className="flex flex-col text-center justify-center">
                     <header className="footer-title">Services</header>
                     <a className="link link-hover">Branding</a>
                     <a className="link link-hover">Design</a>
                     <a className="link link-hover">Marketing</a>
                     <a className="link link-hover">Advertisement</a>
                 </nav>
-                <nav className="flex flex-col">
+                <nav className="flex flex-col justify-center items-center">
                     <header className="footer-title">Company</header>
                     <a className="link link-hover">About us</a>
                     <a className="link link-hover">Contact</a>
