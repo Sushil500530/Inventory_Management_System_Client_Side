@@ -3,19 +3,17 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import loginImage from '../../assets/image/authentication/undraw_secure_files_re_6vdh.svg'
-import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useAuth();
+    const { createUser, updateUserProfile,googleSignIn } = useAuth();
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const { register, handleSubmit,
         formState: { errors },
     } = useForm();
 
     const handleResister = async (data) => {
-        console.log('button clicked', data);
-        setLoading(true)
         createUser(data?.email, data?.password)
             .then(result => {
                 updateUserProfile(data?.name, data?.photoURL)
@@ -35,17 +33,37 @@ const Register = () => {
                         //     }
                         // })
                     })
-                    .catch(err => console.log(err))
+                    .catch(err => toast.error(err.message))
                 if (result?.user) {
-                    setLoading(false)
-                    navigate('/login')
-
+                     navigate(location?.state ? location.state : "/")
+                    toast.success('resister successfully....!');
                 }
 
             })
             .catch(error => {
-                console.log(error);
+                toast.error(error.message);
             })
+    }
+
+    // Handle Google Signin
+    const handleGoogleSignIn = async () => {
+        try {
+            //2. User Registration using google
+            const result = await googleSignIn()
+            console.log(result.user);
+
+            //4. save user data in database
+            // const dbResponse = await saveUser(result?.user)
+            // console.log(dbResponse)
+
+            //5. get token
+            // await getToken(result?.user?.email)
+             navigate(location?.state ? location.state : "/")
+            toast.success('Login Successful')
+        } catch (err) {
+            console.log(err)
+            toast.error(err?.message)
+        }
     }
     return (
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-7 gap-5">
@@ -77,14 +95,12 @@ const Register = () => {
                             <p className="text-red-600">password is required</p>
                         )}
                     </div>
-                    <p className="text-base font-medium my-8">Please register at first. Go to <Link to='/login' className="text-blue-500 underline">SIGN UP</Link></p>
-                    {loading ? <button className="btn px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-[18px] font-medium hover:text-white w-full">Sign in</button> : 
-                       <p> Processing...</p>
-                    }
+                    <p className="text-base font-medium my-8">Please register at first. Go to <Link to='/login' className="text-blue-500 underline">SIGN In</Link></p>
+                    <button className="btn px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-[18px] font-medium hover:text-white w-full">Sign Up</button>
                 </form>
                 <div className="w-3/5 mx-auto">
                     <div className="divider text-2xl">Or</div>
-                    <div className="space-y-3 mt-6">
+                    <div onClick={handleGoogleSignIn} className="space-y-3 mt-6">
                         <h1 className="flex items-center justify-center py-2 border rounded-full text-3xl ease-in gap-5 hover:bg-[#F2F3F3] cursor-pointer transition hover:text-blue-600"><FcGoogle></FcGoogle> <span className="text-xl font-bold">Sign in With Google</span></h1>
                     </div>
                 </div>

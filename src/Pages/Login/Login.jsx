@@ -3,26 +3,54 @@ import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import loginImage from '../../assets/image/authentication/undraw_secure_files_re_6vdh.svg'
+import toast from "react-hot-toast";
 
 const Login = () => {
-    const {loginUser} = useAuth();
+    const { loginUser,googleSignIn } = useAuth();
     const navigate = useNavigate();
     const { register, handleSubmit,
         formState: { errors },
     } = useForm();
     const handleLogin = async (data) => {
         console.log('button clicked', data);
+        const toastId = toast.loading('resister proccessing....');
         loginUser(data?.email, data?.password)
-        .then(result => {
-            console.log(result.user);
-            if(result?.user){
-                return navigate(location?.state ? location.state : "/")
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                console.log(result.user);
+                if (result?.user) {
+                    navigate(location?.state ? location.state : "/");
+                    return toast.success('resister successfully....!', { id: toastId })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
+
+    // Handle Google Signin
+    const handleGoogleSignIn = async () => {
+        try {
+            //2. User Registration using google
+            const result = await googleSignIn()
+            console.log(result.user);
+
+            //4. save user data in database
+            // const dbResponse = await saveUser(result?.user)
+            // console.log(dbResponse)
+
+            //5. get token
+            // await getToken(result?.user?.email)
+            navigate('/')
+            toast.success('Login Successful')
+        } catch (err) {
+            console.log(err)
+            toast.error(err?.message)
+        }
+    }
+
+
+
+
     return (
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-7 gap-5">
             <div className="bg-[url('https://i.ibb.co/zF7chZF/Animated-Shape.png')] w-full min-h-[50vh] lg:w-3/5 lg:h-[80vh] bg-no-repeat bg-center bg-cover flex items-center justify-center p-5">
@@ -46,7 +74,7 @@ const Login = () => {
                 </form>
                 <div className="w-3/5 mx-auto">
                     <div className="divider text-2xl">Or</div>
-                    <div className="space-y-3 mt-6">
+                    <div onClick={handleGoogleSignIn} className="space-y-3 mt-6">
                         <h1 className="flex items-center justify-center py-2 border rounded-full text-3xl ease-in gap-5 hover:bg-[#F2F3F3] cursor-pointer transition hover:text-blue-600"><FcGoogle></FcGoogle> <span className="text-xl font-bold">Sign in With Google</span></h1>
                     </div>
                 </div>
