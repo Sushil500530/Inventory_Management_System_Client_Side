@@ -4,11 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import loginImage from '../../assets/image/authentication/undraw_secure_files_re_6vdh.svg'
 import toast from 'react-hot-toast';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Register = () => {
-    const { createUser, updateUserProfile,googleSignIn } = useAuth();
+    const { createUser, updateUserProfile, googleSignIn } = useAuth();
     const navigate = useNavigate();
-    // const [loading, setLoading] = useState(true);
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit,
         formState: { errors },
     } = useForm();
@@ -22,20 +23,20 @@ const Register = () => {
                         // create user entry in the database 
                         const userInfo = {
                             name: data?.name,
-                            email: data?.email
+                            email: data?.email,
+                            role: 'guest',
+                            status: 'Verified',
                         }
-                        console.log(userInfo, result?.user);
-                        // axiosPublic.post('/users', userInfo)
-                        // .then(res => {
-                        //     if(res.data.insertedId){
-                        //         console.log('user added database ---->',res.data);
-                        //         toast.success("Resister Successfully...!") 
-                        //     }
-                        // })
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added database ---->', res.data);
+                                }
+                            })
                     })
                     .catch(err => toast.error(err.message))
                 if (result?.user) {
-                     navigate(location?.state ? location.state : "/")
+                    navigate(location?.state ? location.state : "/")
                     toast.success('resister successfully....!');
                 }
 
@@ -50,15 +51,20 @@ const Register = () => {
         try {
             //2. User Registration using google
             const result = await googleSignIn()
-            console.log(result.user);
-
-            //4. save user data in database
-            // const dbResponse = await saveUser(result?.user)
-            // console.log(dbResponse)
-
-            //5. get token
-            // await getToken(result?.user?.email)
-             navigate(location?.state ? location.state : "/")
+            if (result.user) {
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName,
+                    role: 'guest',
+                    status: 'Verified',
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(err => console.error(err))
+            }
+            navigate(location?.state ? location.state : "/")
             toast.success('Login Successful')
         } catch (err) {
             console.log(err)

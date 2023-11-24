@@ -4,20 +4,35 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import loginImage from '../../assets/image/authentication/undraw_secure_files_re_6vdh.svg'
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
-    const { loginUser,googleSignIn } = useAuth();
+    const { loginUser, googleSignIn } = useAuth();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic()
     const { register, handleSubmit,
         formState: { errors },
     } = useForm();
     const handleLogin = async (data) => {
         console.log('button clicked', data);
-        const toastId = toast.loading('resister proccessing....');
+        const toastId = toast.loading(' proccessing....');
         loginUser(data?.email, data?.password)
             .then(result => {
                 console.log(result.user);
                 if (result?.user) {
+                    if (result.user) {
+                        const userInfo = {
+                            email: result.user?.email,
+                            name: result.user?.displayName,
+                            role: 'guest',
+                            status: 'Verified',
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                console.log(res.data);
+                            })
+                            .catch(err => console.error(err))
+                    }
                     navigate(location?.state ? location.state : "/");
                     return toast.success('resister successfully....!', { id: toastId })
                 }
@@ -32,15 +47,20 @@ const Login = () => {
         try {
             //2. User Registration using google
             const result = await googleSignIn()
-            console.log(result.user);
-
-            //4. save user data in database
-            // const dbResponse = await saveUser(result?.user)
-            // console.log(dbResponse)
-
-            //5. get token
-            // await getToken(result?.user?.email)
-            navigate('/')
+            if (result.user) {
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName,
+                    role: 'guest',
+                    status: 'Verified',
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(err => console.error(err))
+            }
+            navigate(location?.state ? location.state : "/")
             toast.success('Login Successful')
         } catch (err) {
             console.log(err)
