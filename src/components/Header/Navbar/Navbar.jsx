@@ -5,7 +5,7 @@ import { FaHome, FaShopify } from "react-icons/fa";
 import Logo from "./Logo";
 import profile from '../../../assets/image/authentication/profile.png'
 import useAuth from "../../../Hooks/useAuth";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 
@@ -31,7 +31,9 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                         </label>
                     </div>
+                    <Link to='/'>
                     <Logo />
+                </Link>
                     <div className="flex-none hidden lg:block">
                         <div className="flex items-center gap-2 dark:text-white">
                             <MenuList address={'/'} linkTitle={'Home'} icon={FaHome} />

@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import Logo from "../../components/Header/Navbar/Logo";
 const Footer = () => {
     return (
         <footer className="footer py-10 bg-base-300 text-base-content">
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full items-center gap-10 lg:gap-4 justify-center px-8">
-                <nav>
+                <Link to='/'>
                     <Logo />
-                </nav>
+                </Link>
                 <nav className="flex flex-col text-center justify-center">
                     <header className="footer-title">Services</header>
                     <a className="link link-hover">Branding</a>

@@ -76,7 +76,7 @@ const Register = () => {
             <div className="bg-[url('https://i.ibb.co/zF7chZF/Animated-Shape.png')] w-full lg:w-3/5 h-[80vh] bg-no-repeat bg-center bg-cover flex items-center justify-center p-5">
                 <img src={loginImage} alt="" />
             </div>
-            <div className="card-body border m-5 w-1/2">
+            <div className="card-body p-0 lg:p-8 border m-5 w-full lg:w-1/2">
                 <form onSubmit={handleSubmit(handleResister)} className="p-5 space-y-3">
                     <h1 className="text-3xl font-bold mb-12">Please Register Now🤠</h1>
                     <div className="space-y-3">
@@ -102,9 +102,9 @@ const Register = () => {
                         )}
                     </div>
                     <p className="text-base font-medium my-8">Please register at first. Go to <Link to='/login' className="text-blue-500 underline">SIGN In</Link></p>
-                    <button className="btn px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-[18px] font-medium hover:text-white w-full">Sign Up</button>
+                    <button className="btn px-8 bg-gradient-to-r from-purple-500 to-pink-500 text-[18px] font-medium hover:text-white w-full">Sign Up</button>
                 </form>
-                <div className="w-3/5 mx-auto">
+                <div className="w-3/5 mx-auto pb-6">
                     <div className="divider text-2xl">Or</div>
                     <div onClick={handleGoogleSignIn} className="space-y-3 mt-6">
                         <h1 className="flex items-center justify-center py-2 border rounded-full text-3xl ease-in gap-5 hover:bg-[#F2F3F3] cursor-pointer transition hover:text-blue-600"><FcGoogle></FcGoogle> <span className="text-xl font-bold">Sign in With Google</span></h1>

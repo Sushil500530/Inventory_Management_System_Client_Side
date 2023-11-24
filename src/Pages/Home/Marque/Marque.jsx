@@ -12,7 +12,7 @@ import image8 from '../../../assets/image/car company/f690a583fb11011fccc953c4aa
 const Marque = () => {
     return (
         <div className="my-12 dark:text-white container mx-auto">
-            <h2 className="text-4xl my-8 text-center font-bold">Our <span className="text-fuchsia-500">Product</span> Related Companies</h2>
+            <h2 className="text-4xl my-8 text-center font-bold">Our <span className="text-fuchsia-500">Product</span> Shared Companies</h2>
             <Marquee speed={100} pauseOnHover={true} className=" w-[95%] mx-auto">
                 <div className="w-full grid grid-cols-10 items-center justify-center gap-7 mt-8">
                     <CompanyServices image={image} />
