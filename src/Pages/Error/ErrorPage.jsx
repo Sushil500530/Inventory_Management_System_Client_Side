@@ -10,7 +10,7 @@ const ErrorPage = () => {
         </div>
         <div className="absolute top-[75%] text-white text-center">
             <h2 className="text-3xl font-bold">Sorry,</h2>
-            <p className="text-3xl font-bold">Page Not Found</p>
+            <p className="text-3xl font-bold mb-6">Page Not Found</p>
            <Link to='/'>
             <Button style={'text-white'} title={'Go Home'}
             icon={FaHome }

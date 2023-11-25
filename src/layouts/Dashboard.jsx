@@ -5,10 +5,9 @@ import { useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
 import DashboardMenubar from "./Dashboard/Dashboard menu/DashboardMenubar";
 import { Helmet } from "react-helmet-async";
-
 const Dashboard = () => {
     const [isActive, setActive] = useState(false)
-
+  
     const handleToggle = () => {
         setActive(!isActive)
     }
@@ -31,7 +30,8 @@ const Dashboard = () => {
             </div>
             <div className="flex">
                 {/* dashboard menu bar  */}
-                <DashboardMenubar isActive={isActive} />
+             <DashboardMenubar isActive={isActive} />
+              
                 {/* dashboard content */}
                 <div className="flex-1 p-5">
                     <Outlet></Outlet>

@@ -6,14 +6,15 @@ import Loading from "../../../components/Shared/Loading";
 
 const Settings = () => {
 const {user} = useAuth();
-const [getRole, , isLoading] = useRole();
+const [getRole, ,isLoading ] = useRole();
 const currentUser = getRole.filter(usr => usr?.email == user?.email)
 if(isLoading){
     return <Loading />
 }
     return (
         <div className="w-full">
-            <h2 className="text-3xl text-center">Settings Section</h2>
+           
+            <h2 className="text-3xl text-center">Settings for User👨‍🎓</h2>
             <div className='flex justify-center w-full items-center mt-10'>
                 <Helmet>
                     <title>Setting | Inventory Management</title>
@@ -37,23 +38,23 @@ if(isLoading){
                         /> }
                         </a>
 
-                        <p className='p-2 px-4 text-xs text-white bg-pink-500 rounded-full'>
+                        <p className='p-2 px-4 text-base text-white bg-pink-500 rounded-full'>
                             {currentUser[0]?.role.toUpperCase()}
                         </p>
-                        <p className='mt-2 text-xl font-medium text-gray-800 '>
-                            {/* User Id: {user.uid} */}
+                        <p className='mt-2 text-xl font-medium text-center text-gray-800 '>
+                            User Id: {user?.uid}
                         </p>
                         <div className='w-full p-2 mt-4 rounded-lg'>
-                            <div className='flex flex-wrap items-center justify-between text-sm text-gray-600 '>
+                            <div className='flex flex-wrap items-center justify-between text-sm text-gray-600 space-y-3 '>
                                 <p className='flex flex-col'>
                                     Name
-                                    <span className='font-bold text-black '>
+                                    <p className='font-bold text-[16px] text-black '>
                                         {user?.displayName}
-                                    </span>
+                                    </p>
                                 </p>
                                 <p className='flex flex-col'>
                                     Email
-                                    <span className='font-bold text-black '>{user?.email}</span>
+                                    <p className='font-bold text-[16px] text-black '>{user?.email}</p>
                                 </p>
 
                                 <div>

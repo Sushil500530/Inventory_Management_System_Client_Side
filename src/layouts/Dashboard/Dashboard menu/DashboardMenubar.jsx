@@ -9,11 +9,18 @@ import ProductManagerMenu from "./ProductManagerMenu";
 import { AiFillHome } from "react-icons/ai";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useRole from "../../../Hooks/useRole";
+import Loading from "../../../components/Shared/Loading";
 
 const DashboardMenubar = ({ isActive }) => {
     const [toggle, setToggle] = useState(false);
-    const {logoutUser} = useAuth();
+    const {user,logoutUser} = useAuth();
     const navigate = useNavigate();
+    const [getRole, , isLoading] = useRole();
+    const currentUserRole = getRole.filter(usr => usr?.email == user?.email);
+    // if(isLoading){
+    //     return <Loading />
+    // }
 
     const toggleHandler = event => {
         setToggle(event.target.checked)
@@ -34,10 +41,15 @@ const DashboardMenubar = ({ isActive }) => {
                         <HanadleToggleBtn toggler={toggleHandler} />
                     </div>
                     {/* product manager menu  */}
-                    {/* <ProductManagerMenu /> */}
+                    {
+                    currentUserRole[0]?.role ==='guest' && <ProductManagerMenu />
+                    }
                     <div className="divider"></div>
                     {/* admin menu  */}
-                    <AdminMenu />
+                    {
+                    currentUserRole[0]?.role ==='admin' &&  <AdminMenu />
+                    }
+                   
                 </div>
                 <div>
                     <div className="divider"></div>

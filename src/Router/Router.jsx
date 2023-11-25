@@ -16,6 +16,7 @@ import SaleSummary from "../layouts/Dashboard/product manager/sale summary/SaleS
 import ManageShop from "../layouts/Dashboard/System Admin/manage shop/ManageShop";
 import AllUsers from "../layouts/Dashboard/System Admin/AllUsers/AllUsers";
 import Settings from "../layouts/Dashboard/common/Settings";
+import PrivetRoute from "../provider/PrivetRoute";
 
 const Router = createBrowserRouter([
     {
@@ -37,65 +38,65 @@ const Router = createBrowserRouter([
             },
             {
                 path:'create-shop',
-                element:<CreateShop />
+                element: <PrivetRoute><CreateShop /></PrivetRoute>
             },
         ]
     },
     {
         path:'/dashboard',
-        element: <Dashboard />,
+        element:<PrivetRoute><Dashboard /></PrivetRoute>,
         children: [
             // product manager section 
             {
                 path:'manager',
-                element:<ProductManager />
+                element:<PrivetRoute><ProductManager /></PrivetRoute>
             },
             {
                 path:'product-add',
-                element:<ProductAdd />
+                element:<PrivetRoute><ProductAdd /></PrivetRoute>
             },
             {
                 path:'products-section',
-                element:<ProductSection />
+                element:<PrivetRoute><ProductSection /></PrivetRoute>
             },
             {
                 path:'sale-Collection',
-                element:<SaleCollection />
+                element:<PrivetRoute><SaleCollection /></PrivetRoute>
             },
             {
                 path:'checkout',
-                element:<Checkout />
+                element:<PrivetRoute><Checkout /></PrivetRoute>
             },
             {
                 path:'subscription-and-payment',
-                element:<Payment />
+                element:<PrivetRoute><Payment /></PrivetRoute>
             },
             {
                 path:'sale-summary',
-                element:<SaleSummary />
+                element:<PrivetRoute><SaleSummary /></PrivetRoute>
             },
 
             // system admin section 
             {
                 path:'admin-home',
-                element:<ManageShop />
+                element:<PrivetRoute><ManageShop /></PrivetRoute>
             },
             {
                 path:'manager-shop',
-                element:<ManageShop />
+                element:<PrivetRoute><ManageShop /></PrivetRoute>
             },
             {
                 path:'admin-sale-summary',
-                element:<SaleSummary />
+                element:<PrivetRoute><SaleSummary /></PrivetRoute>
             },
             {
                 path:'all-users',
-                element:<AllUsers />
+                element:<PrivetRoute><AllUsers /></PrivetRoute>
             },
             // common section 
             {
                 path:'settings',
-                element:<Settings />
+                element:<PrivetRoute><Settings /></PrivetRoute>
             },
         ]
     }

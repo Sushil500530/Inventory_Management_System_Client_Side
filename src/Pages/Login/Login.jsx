@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
@@ -9,10 +9,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const Login = () => {
     const { loginUser, googleSignIn } = useAuth();
     const navigate = useNavigate();
-    const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic();
+    const location = useLocation();
     const { register, handleSubmit,
         formState: { errors },
     } = useForm();
+   
     const handleLogin = async (data) => {
         console.log('button clicked', data);
         const toastId = toast.loading(' proccessing....');
