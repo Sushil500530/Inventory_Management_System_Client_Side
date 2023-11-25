@@ -77,6 +77,10 @@ const Router = createBrowserRouter([
 
             // system admin section 
             {
+                path:'admin-home',
+                element:<ManageShop />
+            },
+            {
                 path:'manager-shop',
                 element:<ManageShop />
             },
