@@ -17,7 +17,7 @@ const Dashboard = () => {
             <Helmet>
                 <title>Dashboard | Inventory Management</title>
             </Helmet>
-            <div className='bg-gray-100 border text-gray-800 flex justify-between md:hidden'>
+            <div className='bg-gray-100 border text-gray-800 flex justify-between lg:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
                         <Link to='/'>

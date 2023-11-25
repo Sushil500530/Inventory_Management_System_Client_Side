@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { FaTrashAlt, } from "react-icons/fa";
-import { MdCreate, MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { MdEmail } from "react-icons/md";
+import Loading from "../../../../components/Shared/Loading";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: users, refetch } = useQuery({
+    const { data: users, refetch,isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users')
@@ -20,6 +20,9 @@ const AllUsers = () => {
     const handleMakeAdmin = () => {
         console.log('meking admin');
     }
+    if(isLoading){
+        return <Loading />
+    }
 
     return (
         <div>
@@ -27,11 +30,11 @@ const AllUsers = () => {
                 <h3 className="text-xl font-bold text-center">Manage All Users</h3>
                 <h3 className="text-xl font-bold text-center">Total Users : {users?.length}</h3>
             </div>
-            <div className="overflow-x-auto">
-                <table className="table w-full">
+            <div className="">
+                <table className="table w-full ">
                     {/* head */}
-                    <thead className="text-[18px] font-bold table-zebra overflow-x-auto">
-                        <tr>
+                    <thead className="text-[18px] font-bold table-zebra overflow-x-auto ">
+                        <tr className="overflow-x-auto " >
                             <th>Count</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -40,7 +43,7 @@ const AllUsers = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody className="text-[18px] my-3 font-medium">
+                    <tbody className="text-[18px] my-3 font-medium overflow-x-auto">
 
                         {
                             users?.map((user, index) =>
