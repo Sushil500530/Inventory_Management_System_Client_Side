@@ -44,7 +44,7 @@ const Navbar = () => {
                             <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <MdOutlineSlideshow className="w-6 h-10 mr-1"></MdOutlineSlideshow>Watch Demo</span>
                             </a> 
                            </span>
-                           <MenuList address={'dashboard'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />
+                           <MenuList address={'dashboard/manager'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />
                             {
                                 user ? <><div className="avatar flex items-center justify-center">
                                     <h3 className="mr-5 font-medium"> {user?.displayName}</h3>
