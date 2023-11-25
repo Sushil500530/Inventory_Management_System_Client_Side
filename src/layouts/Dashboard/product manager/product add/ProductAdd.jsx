@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import useAuth from '../../../../Hooks/useAuth'
+import { imageUpload } from "../../../../api/auth";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const ProductAdd = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
     const [loading, setLoading] = useState(false);
+    const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const handleAddedProduct = async (e) => {
         e.preventDefault();
@@ -17,10 +24,42 @@ const ProductAdd = () => {
         const product_profit = form.product_profit.value;
         const discount = form.discount.value;
         const owner_name = user?.displayName;
-        const owner_email = user?.email;
+        const email = user?.email;
         const location = form.location.value;
-        const create_shop = { product_name,quantity,product_cost,image,product_profit,discount,description, location,owner_email,owner_name};
-        console.log(create_shop);
+
+        try {
+            const loadImage = await imageUpload(image)
+            const addProducts = {
+                product_name,
+                quantity,
+                product_cost,
+                image: loadImage?.data?.display_url,
+                product_profit,
+                discount,
+                description,
+                location,
+                email,
+                owner_name
+            };
+           axiosSecure.post('/products',addProducts)
+           .then(res => {
+            setLoading(false)
+            if(res.data?.insertedId){
+                Swal.fire({
+                    title: "Added Successfull!",
+                    text: "You clicked the button!",
+                    icon: "success",
+                    timer:1000
+                  });
+            }
+navigate('/dashboard/manager')
+           })
+
+
+        }
+        catch (error) {
+            toast.error(error.message)
+        }
     }
     return (
         <div>
@@ -29,23 +68,23 @@ const ProductAdd = () => {
                 <form onSubmit={handleAddedProduct}>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                         <div className='space-y-6'>
-                           <div className="flex w-full gap-4">
-                           <div className='space-y-1 w-full'>
-                                <label htmlFor='location' className='block text-black font-medium'>
-                                    Product Name
-                                </label>
-                                <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 ' name='product_name' id='product_name' type='text' placeholder='Product name' required
-                                />
+                            <div className="flex w-full gap-4">
+                                <div className='space-y-1 w-full'>
+                                    <label htmlFor='location' className='block text-black font-medium'>
+                                        Product Name
+                                    </label>
+                                    <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 ' name='product_name' id='product_name' type='text' placeholder='Product name' required
+                                    />
+                                </div>
+                                <div className='space-y-1 w-full'>
+                                    <label htmlFor='location' className='block text-black font-medium'>
+                                        Location
+                                    </label>
+                                    <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 '
+                                        name='location' id='location' type='text' placeholder='Location' required
+                                    />
+                                </div>
                             </div>
-                            <div className='space-y-1 w-full'>
-                                <label htmlFor='location' className='block text-black font-medium'>
-                                    Location
-                                </label>
-                                <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 '
-                                    name='location' id='location' type='text' placeholder='Location' required
-                                />
-                            </div>
-                           </div>
                             <div className=' p-4 bg-white w-full m-auto rounded-lg'>
                                 <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
                                     <div className='flex flex-col w-max mx-auto text-center'>
@@ -104,13 +143,13 @@ const ProductAdd = () => {
                                 </div>
                             </div>
                             <button type='submit' className='btn w-full mt-5 p-3 text-[18px] text-center font-medium hover:text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-purple-500 to-pink-500 text-black '
-                    >
-                        {loading ? (
-                            <FaSpinner className='m-auto animate-spin' size={24} />
-                        ) : (
-                            'Added Product'
-                        )}
-                    </button>
+                            >
+                                {loading ? (
+                                    <FaSpinner className='m-auto animate-spin' size={24} />
+                                ) : (
+                                    'Added Product'
+                                )}
+                            </button>
                         </div>
                     </div>
                 </form>

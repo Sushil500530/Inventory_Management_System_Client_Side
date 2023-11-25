@@ -12,7 +12,7 @@ const HanadleToggleBtn = ({ toggler }) => {
                     Guest
                 </span>
                 <span className=' px-6 text-[18px] font-medium py-3 rounded-r-md bg-gray-300 peer-checked:bg-gradient-to-r from-purple-500 to-pink-500'>
-                    Host
+                    Manager
                 </span>
             </label>
         </>

@@ -9,15 +9,13 @@ import ProductManagerMenu from "./ProductManagerMenu";
 import { AiFillHome } from "react-icons/ai";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import useRole from "../../../Hooks/useRole";
-import Loading from "../../../components/Shared/Loading";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const DashboardMenubar = ({ isActive }) => {
     const [toggle, setToggle] = useState(false);
     const {user,logoutUser} = useAuth();
+    const [isAdmin] = useAdmin();
     const navigate = useNavigate();
-    const [getRole, , isLoading] = useRole();
-    const currentUserRole = getRole.filter(usr => usr?.email == user?.email);
     // if(isLoading){
     //     return <Loading />
     // }
@@ -42,12 +40,13 @@ const DashboardMenubar = ({ isActive }) => {
                     </div>
                     {/* product manager menu  */}
                     {
-                    currentUserRole[0]?.role ==='guest' && <ProductManagerMenu />
+                        isAdmin === false && <ProductManagerMenu />
                     }
+                    
                     <div className="divider"></div>
                     {/* admin menu  */}
                     {
-                    currentUserRole[0]?.role ==='admin' &&  <AdminMenu />
+                        isAdmin === true &&  <AdminMenu />
                     }
                    
                 </div>

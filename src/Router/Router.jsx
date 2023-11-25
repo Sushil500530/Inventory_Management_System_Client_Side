@@ -17,6 +17,7 @@ import ManageShop from "../layouts/Dashboard/System Admin/manage shop/ManageShop
 import AllUsers from "../layouts/Dashboard/System Admin/AllUsers/AllUsers";
 import Settings from "../layouts/Dashboard/common/Settings";
 import PrivetRoute from "../provider/PrivetRoute";
+import AdminRoute from "../layouts/Dashboard/AdminRoute";
 
 const Router = createBrowserRouter([
     {
@@ -79,19 +80,19 @@ const Router = createBrowserRouter([
             // system admin section 
             {
                 path:'admin-home',
-                element:<PrivetRoute><ManageShop /></PrivetRoute>
+                element:<AdminRoute><ManageShop /></AdminRoute>
             },
             {
                 path:'manager-shop',
-                element:<PrivetRoute><ManageShop /></PrivetRoute>
+                element:<AdminRoute><ManageShop /></AdminRoute>
             },
             {
                 path:'admin-sale-summary',
-                element:<PrivetRoute><SaleSummary /></PrivetRoute>
+                element:<AdminRoute><SaleSummary /></AdminRoute>
             },
             {
                 path:'all-users',
-                element:<PrivetRoute><AllUsers /></PrivetRoute>
+                element:<AdminRoute><AllUsers /></AdminRoute>
             },
             // common section 
             {
