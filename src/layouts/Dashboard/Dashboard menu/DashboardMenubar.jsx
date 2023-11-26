@@ -10,11 +10,16 @@ import { AiFillHome } from "react-icons/ai";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import useAdmin from "../../../Hooks/useAdmin";
+import useRole from "../../../Hooks/useRole";
+import GuestMenu from "../Guest/GuestMenu";
 
 const DashboardMenubar = ({ isActive }) => {
     const [toggle, setToggle] = useState(false);
-    const {user,logoutUser} = useAuth();
+    const {logoutUser} = useAuth();
     const [isAdmin] = useAdmin();
+    console.log(isAdmin);
+    const [users] = useRole();
+    console.log(users.role);
     const navigate = useNavigate();
     // if(isLoading){
     //     return <Loading />
@@ -38,15 +43,18 @@ const DashboardMenubar = ({ isActive }) => {
                     <div className="mb-5">
                         <HanadleToggleBtn toggler={toggleHandler} />
                     </div>
-                    {/* product manager menu  */}
-                    {
-                        isAdmin === false && <ProductManagerMenu />
-                    }
-                    
-                    <div className="divider"></div>
+                   
                     {/* admin menu  */}
-                    {
-                        isAdmin === true &&  <AdminMenu />
+                     {
+                        users?.role ==="admin" && <AdminMenu />
+                    }
+                      {/* product manager menu  */}
+                     {
+                        users?.role ==="manager" && <ProductManagerMenu />
+                    }
+                      {/* guest menu  */}
+                     {
+                        users?.role ==="guest" && <GuestMenu />
                     }
                    
                 </div>

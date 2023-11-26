@@ -13,8 +13,7 @@ const Settings = () => {
     }
     return (
         <div className="w-full">
-
-            <h2 className="text-3xl text-center">Settings for User👨‍🎓</h2>
+            <h2 className="text-3xl text-center my-8 font-bold">Settings for User👨‍🎓</h2>
             <div className='flex justify-center w-full items-center mt-10 '>
                 <Helmet>
                     <title>Setting | Inventory Management</title>
@@ -30,11 +29,11 @@ const Settings = () => {
                             {user?.photoURL ? <img
                                 alt='profile'
                                 src={user?.photoURL}
-                                className='mx-auto object-cover rounded-full h-28 w-28  border-2 border-white '
+                                className='mx-auto object-cover rounded-full h-28 w-28  border-4 border-blue-500 '
                             /> : <img
                                 alt='profile'
                                 src={profile}
-                                className='mx-auto object-cover rounded-full h-24 w-24  border-2 border-white '
+                                className='mx-auto object-cover rounded-full h-24 w-24  border-4 border-blue-500 '
                             />}
                         </a>
                         <p className='mt-7 py-1 px-4 text-base text-white bg-pink-500 rounded-full'>

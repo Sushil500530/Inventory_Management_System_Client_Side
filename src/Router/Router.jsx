@@ -20,6 +20,8 @@ import AdminRoute from "../layouts/Dashboard/AdminRoute";
 import UpdateProduct from "../layouts/Dashboard/product manager/updateProduct/UpdateProduct";
 import AdminHome from "../layouts/Dashboard/System Admin/AdminHome/AdminHome";
 import ManagerShop from "../layouts/Dashboard/System Admin/Manager Shop/ManagerShop";
+import GuestHome from "../layouts/Dashboard/Guest/GuestHome";
+import Document from "../layouts/Dashboard/Guest/Document";
 
 const Router = createBrowserRouter([
     {
@@ -49,6 +51,15 @@ const Router = createBrowserRouter([
         path:'/dashboard',
         element:<PrivetRoute><Dashboard /></PrivetRoute>,
         children: [
+            // guest section 
+            {
+                path:'guest-home',
+                element:<PrivetRoute><GuestHome /></PrivetRoute>
+            },
+            {
+                path:'doc-type',
+                element:<PrivetRoute><Document /></PrivetRoute>
+            },
             // product manager section 
             {
                 path:'manager',

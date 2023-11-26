@@ -9,11 +9,15 @@ import useAuth from "../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
-import useAdmin from "../../../Hooks/useAdmin";
+// import useAdmin from "../../../Hooks/useAdmin";
+import useRole from "../../../Hooks/useRole";
+import Loading from "../../Shared/Loading";
 
 const Navbar = () => {
     const { user, logoutUser } = useAuth();
-    const [isAdmin]= useAdmin();
+    // const [isAdmin]= useAdmin();
+    const [users, , isLoading] = useRole();
+    console.log(users);
 
     const handleLogout = () => {
         const toastId = toast.loading('logout proccessing....');
@@ -22,6 +26,9 @@ const Navbar = () => {
                 toast.success('Logout successfully....!', { id: toastId });
             })
             .catch(() => { })
+    }
+    if(isLoading){
+        return <Loading />
     }
     return (
         <div className=" w-full dark:bg-zinc-900">
@@ -45,10 +52,13 @@ const Navbar = () => {
                             </a> 
                            </span>
                           {
-                           user?.email && isAdmin && <MenuList address={'dashboard/admin-home'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />   
+                           users?.role === "admin" && <MenuList address={'dashboard/admin-home'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />   
                           }
                           {
-                           user?.email && !isAdmin && <MenuList address={'dashboard/manager'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />    
+                            users?.role === "manager" && <MenuList address={'dashboard/manager'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />    
+                          }
+                          {
+                            users?.role === "guest" && <MenuList address={'dashboard/guest-home'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />    
                           }
                             {
                                 user ? <><div className="avatar flex items-center justify-center">
