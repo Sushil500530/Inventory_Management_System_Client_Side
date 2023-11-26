@@ -2,19 +2,19 @@ import { Link } from "react-router-dom";
 import Logo from "../../components/Header/Navbar/Logo";
 const Footer = () => {
     return (
-        <footer className="footer py-10 bg-base-300 text-base-content">
+        <footer className="footer bg-base-300 text-base-content py-20">
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full items-center gap-10 lg:gap-4 justify-center px-8">
                 <Link to='/'>
                     <Logo />
                 </Link>
-                <nav className="flex flex-col text-center justify-center">
+                <nav className="flex flex-col text-center justify-center space-y-3">
                     <header className="footer-title">Services</header>
                     <a className="link link-hover">Branding</a>
                     <a className="link link-hover">Design</a>
                     <a className="link link-hover">Marketing</a>
                     <a className="link link-hover">Advertisement</a>
                 </nav>
-                <nav className="flex flex-col justify-center items-center">
+                <nav className="flex flex-col justify-center space-y-3 items-center">
                     <header className="footer-title">Company</header>
                     <a className="link link-hover">About us</a>
                     <a className="link link-hover">Contact</a>

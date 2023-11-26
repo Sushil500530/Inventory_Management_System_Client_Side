@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
+import { TbPlaylistAdd } from "react-icons/tb";
 import useAuth from '../../../../Hooks/useAuth'
 import { imageUpload } from "../../../../api/auth";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import IconBar from "../../../../components/Shared/IconBar";
 const ProductAdd = () => {
     const { user } = useAuth();
     const [loading, setLoading] = useState(false);
@@ -41,19 +43,19 @@ const ProductAdd = () => {
                 email,
                 owner_name
             };
-           axiosSecure.post('/products',addProducts)
-           .then(res => {
-            setLoading(false)
-            if(res.data?.insertedId){
-                Swal.fire({
-                    title: "Added Successfull!",
-                    text: "You clicked the button!",
-                    icon: "success",
-                    timer:1000
-                  });
-            }
-navigate('/dashboard/manager')
-           })
+            axiosSecure.post('/products', addProducts)
+                .then(res => {
+                    setLoading(false)
+                    if (res.data?.insertedId) {
+                        Swal.fire({
+                            title: "Added Successfull!",
+                            text: "You clicked the button!",
+                            icon: "success",
+                            timer: 1000
+                        });
+                    }
+                    navigate('/dashboard/manager')
+                })
 
 
         }
@@ -62,13 +64,13 @@ navigate('/dashboard/manager')
         }
     }
     return (
-        <div>
-            <h3 className="text-3xl text-center font-bold">Add Product....🧨🧨</h3>
+        <div className="w-[90%] mx-auto">
+            <h3 className="text-3xl text-center font-bold mt-12 mb-5 flex items-center justify-center gap-2">Add Product <IconBar icon={TbPlaylistAdd} />  </h3>
             <div className="container mx-auto mt-12">
                 <form onSubmit={handleAddedProduct}>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                         <div className='space-y-6'>
-                            <div className="flex w-full gap-4">
+                            <div className="flex flex-col md:flex-row lg:flex-row w-full gap-4">
                                 <div className='space-y-1 w-full'>
                                     <label htmlFor='location' className='block text-black font-medium'>
                                         Product Name
@@ -85,22 +87,14 @@ navigate('/dashboard/manager')
                                     />
                                 </div>
                             </div>
-                            <div className=' p-4 bg-white w-full m-auto rounded-lg'>
-                                <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                                    <div className='flex flex-col w-max mx-auto text-center'>
-                                        <label>
-                                            {/* <input className=" cursor-pointer w-36 hidden" type='file' name='image' id='image' accept='image/*'
-                                                hidden
-                                            /> */}
-                                            <input type='file' name='image' id='image' accept='image/*' className="file-input file-input-secondary focus:border-none w-full max-w-xs" />
-                                            {/* <div className='bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                                Upload Shop Logo
-                                            </div> */}
-                                        </label>
+                            <div className=' bg-white w-full m-auto rounded-lg'>
+                                <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg overflow-hidden'>
+                                    <div className='flex flex-col w-max mx-auto text-center overflow-hidden'>
+                                        <input type='file' name='image' id='image' accept='image/*' className="file-input file-input-secondary focus:border-none " />
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex gap-4 w-full">
+                            <div className="flex flex-col md:flex-row lg:flex-row w-full gap-4">
                                 <div className='space-y-1 w-full'>
                                     <label htmlFor='location' className='block text-black font-medium'>
                                         Quantity
@@ -126,7 +120,7 @@ navigate('/dashboard/manager')
                                 <textarea id='description' className='block focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border rounded-md input border-blue-400  ' name='description' placeholder="Write description"
                                 ></textarea>
                             </div>
-                            <div className="flex gap-4 w-full">
+                            <div className="flex flex-col md:flex-row lg:flex-row w-full gap-4">
                                 <div className='space-y-1 w-full'>
                                     <label htmlFor='location' className='block text-black font-medium'>
                                         Product Profit

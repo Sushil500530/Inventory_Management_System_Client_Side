@@ -33,7 +33,7 @@ const Dashboard = () => {
              <DashboardMenubar isActive={isActive} />
               
                 {/* dashboard content */}
-                <div className="flex-1 p-5">
+                <div className="flex-1">
                     <Outlet></Outlet>
                 </div>
             </div>

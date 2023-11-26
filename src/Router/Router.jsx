@@ -18,6 +18,7 @@ import AllUsers from "../layouts/Dashboard/System Admin/AllUsers/AllUsers";
 import Settings from "../layouts/Dashboard/common/Settings";
 import PrivetRoute from "../provider/PrivetRoute";
 import AdminRoute from "../layouts/Dashboard/AdminRoute";
+import UpdateProduct from "../layouts/Dashboard/product manager/updateProduct/UpdateProduct";
 
 const Router = createBrowserRouter([
     {
@@ -100,7 +101,12 @@ const Router = createBrowserRouter([
                 element:<PrivetRoute><Settings /></PrivetRoute>
             },
         ]
-    }
+    },
+    {
+        path:"/updated-product/:id",
+        element:<PrivetRoute><UpdateProduct /></PrivetRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+    },
 ])
 
 export default Router;

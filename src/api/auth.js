@@ -1,11 +1,4 @@
 import axios from 'axios'
-// import useAxiosSecure from "../Hooks/useAxiosSecure"
-// // Get user role
-// export const getRole = async email => {
-//     const { data } = await useAxiosSecure(`/user/${email}`)
-//     return data.role
-//   }
-
 export const imageUpload = async image => {
   const formData = new FormData()
   formData.append('image', image)

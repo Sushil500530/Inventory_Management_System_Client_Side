@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
+import IconBar from "../../components/Shared/IconBar";
+import { MdAddShoppingCart } from "react-icons/md";
 
 const CreateShop = () => {
     const [loading,setLoading] = useState(false);
@@ -18,7 +20,7 @@ const CreateShop = () => {
     }
     return (
         <div className="container mx-auto">
-            <h2 className="text-2xl font-bold text-center my-12">Create a New Shop....🧨🧨</h2>
+            <h2 className="text-2xl font-bold text-center my-12 flex items-center justify-center gap-2">Create a New Shop <IconBar icon={MdAddShoppingCart } /></h2>
             <form onSubmit={handleCreateShop}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                     <div className='space-y-6'>
