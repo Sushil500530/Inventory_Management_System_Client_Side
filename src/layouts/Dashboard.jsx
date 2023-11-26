@@ -28,7 +28,7 @@ const Dashboard = () => {
                     <AiOutlineBars className='h-5 w-5' />
                 </button>
             </div>
-            <div className="flex">
+            <div className="flex h-full">
                 {/* dashboard menu bar  */}
              <DashboardMenubar isActive={isActive} />
               

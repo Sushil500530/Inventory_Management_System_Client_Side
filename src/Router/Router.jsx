@@ -13,12 +13,13 @@ import SaleCollection from "../layouts/Dashboard/product manager/sale collection
 import Checkout from "../layouts/Dashboard/product manager/checkout/Checkout";
 import Payment from "../layouts/Dashboard/product manager/subscription and payment/Payment";
 import SaleSummary from "../layouts/Dashboard/product manager/sale summary/SaleSummary";
-import ManageShop from "../layouts/Dashboard/System Admin/manage shop/ManageShop";
 import AllUsers from "../layouts/Dashboard/System Admin/AllUsers/AllUsers";
 import Settings from "../layouts/Dashboard/common/Settings";
 import PrivetRoute from "../provider/PrivetRoute";
 import AdminRoute from "../layouts/Dashboard/AdminRoute";
 import UpdateProduct from "../layouts/Dashboard/product manager/updateProduct/UpdateProduct";
+import AdminHome from "../layouts/Dashboard/System Admin/AdminHome/AdminHome";
+import ManagerShop from "../layouts/Dashboard/System Admin/Manager Shop/ManagerShop";
 
 const Router = createBrowserRouter([
     {
@@ -81,11 +82,11 @@ const Router = createBrowserRouter([
             // system admin section 
             {
                 path:'admin-home',
-                element:<AdminRoute><ManageShop /></AdminRoute>
+                element:<AdminRoute><AdminHome /></AdminRoute>
             },
             {
                 path:'manager-shop',
-                element:<AdminRoute><ManageShop /></AdminRoute>
+                element:<AdminRoute><ManagerShop /></AdminRoute>
             },
             {
                 path:'admin-sale-summary',
