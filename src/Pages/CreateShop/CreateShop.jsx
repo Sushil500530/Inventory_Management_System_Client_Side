@@ -2,25 +2,55 @@ import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import IconBar from "../../components/Shared/IconBar";
 import { MdAddShoppingCart } from "react-icons/md";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
+import { imageUpload } from "../../api/auth";
+import Swal from "sweetalert2";
 
 const CreateShop = () => {
-    const [loading,setLoading] = useState(false);
-    const handleCreateShop = async(e) => {
+    const axiosSecure = useAxiosSecure();
+    const {user} = useAuth()
+    const [loading, setLoading] = useState(false);
+    const handleCreateShop = async (e) => {
         e.preventDefault();
         setLoading(true);
         const form = e.target;
         const shop_name = form.shop_name.value;
-        const shop_logo = form.image.files[0];
+        const image = form.image.files[0];
         const description = form.description.value;
-        // const owner = user?.displayName;
-        // const owner_email = user?.email;
         const location = form.location.value;
-        const create_shop = {shop_name,shop_logo,description,location};
-        console.log(create_shop);
+        try {
+            const loadImage = await imageUpload(image);
+            const create_shop = { 
+                shop_name,
+                 shop_logo:loadImage?.data?.display_url, 
+                 description, 
+                 location,
+                 owner: user?.displayName,
+                 email:user?.email,
+                 role:'manager',
+             };
+             console.log(create_shop);
+            await axiosSecure.patch('/managers', create_shop)
+            .then(res => {
+                if (res.data?.insertedId) {
+                    Swal.fire({
+                        title: "Create Successfull!",
+                        text: "You clicked the button!",
+                        icon: "success",
+                        timer: 1000
+                    });
+                }
+            })
+        }
+        catch (error) {
+            toast.error(error.message);
+        }
     }
     return (
-        <div className="container mx-auto">
-            <h2 className="text-2xl font-bold text-center my-12 flex items-center justify-center gap-2">Create a New Shop <IconBar icon={MdAddShoppingCart } /></h2>
+        <div className="container mx-auto mb-12">
+            <h2 className="text-2xl font-bold text-center my-12 flex items-center justify-center gap-2">Create a New Shop <IconBar icon={MdAddShoppingCart} /></h2>
             <form onSubmit={handleCreateShop}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                     <div className='space-y-6'>
@@ -33,17 +63,12 @@ const CreateShop = () => {
                                 name='shop_name' id='shop_name' type='text' placeholder='shop name' required
                             />
                         </div>
-                        <div className=' p-4 bg-white w-full m-auto rounded-lg'>
-                            <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                                <div className='flex flex-col w-max mx-auto text-center'>
-                                    <label>
-                                        <input className=" cursor-pointer w-36 hidden" type='file' name='image' id='image' accept='image/*'
-                                            hidden
-                                        />
-                                        <div className='bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
-                                            Upload Shop Logo
-                                        </div>
-                                    </label>
+                        <div className=' p-4 bg-white w-full m-auto rounded-lg'>      
+                            <div className=' bg-white w-full m-auto rounded-lg'>
+                                <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg overflow-hidden'>
+                                    <div className='flex flex-col w-max mx-auto text-center overflow-hidden'>
+                                        <input type='file' name='image' id='image' accept='image/*' className="file-input file-input-secondary focus:border-none " />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,14 +85,14 @@ const CreateShop = () => {
                             <label htmlFor='title' className='block text-black font-medium'>
                                 Shop Owmer Name
                             </label>
-                            <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='name' id='name' type='text' placeholder='name' required
+                            <input defaultValue={user?.displayName} className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='name' id='name' type='text' placeholder='name' required
                             />
                         </div>
                         <div className='space-y-1'>
                             <label htmlFor='title' className='block text-black font-medium'>
                                 Shop Owmer Email
                             </label>
-                            <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='email' id='email' type='email' placeholder='email' required
+                            <input defaultValue={user?.email} className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='email' id='email' type='email' placeholder='email' required
                             />
                         </div>
                         <div className='space-y-1'>

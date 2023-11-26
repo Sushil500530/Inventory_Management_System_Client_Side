@@ -30,7 +30,7 @@ const ProductAdd = () => {
         const location = form.location.value;
 
         try {
-            const loadImage = await imageUpload(image)
+            const loadImage = await imageUpload(image);
             const addProducts = {
                 product_name,
                 quantity,

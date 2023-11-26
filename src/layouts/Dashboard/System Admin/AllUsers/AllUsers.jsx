@@ -6,7 +6,7 @@ import Loading from "../../../../components/Shared/Loading";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: users, refetch,isLoading } = useQuery({
+    const { data: users, refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users')
@@ -20,7 +20,7 @@ const AllUsers = () => {
     const handleMakeAdmin = () => {
         console.log('meking admin');
     }
-    if(isLoading){
+    if (isLoading) {
         return <Loading />
     }
 
@@ -54,8 +54,8 @@ const AllUsers = () => {
                                     <td>{
                                         user?.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className="bg-gradient-to-r from-purple-500 to-pink-500 btn text-white text-base hover:text-black"><MdEmail />Promotional</button>
                                     }</td>
-                                    <td>{user?.shop_name ? user?.shop_name : 
-                                       "No Have"
+                                    <td>{user?.shop_name ? user?.shop_name :
+                                        "No Have"
                                     }</td>
                                     <td>
                                         <button onClick={() => handleDelete(user)} className="btn bg-red-500 text-2xl text-white hover:text-black"><FaTrashAlt></FaTrashAlt></button>

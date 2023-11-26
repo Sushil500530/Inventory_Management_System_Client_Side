@@ -5,6 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import loginImage from '../../assets/image/authentication/undraw_secure_files_re_6vdh.svg'
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { loginUser, googleSignIn } = useAuth();
@@ -39,8 +40,10 @@ const Login = () => {
                     return toast.success('resister successfully....!', { id: toastId })
                 }
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+               return Swal.fire("Please Use Valid Information!");
+                // console.log(error);
+                // toast.error(error);
             })
     }
 
