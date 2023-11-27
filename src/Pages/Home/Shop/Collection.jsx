@@ -28,7 +28,7 @@ const Collection = ({ product }) => {
                 <h2 className="card-title">{product_name}</h2>
                 <p>{description.slice(0, 70)}</p>
                 <div className="card-actions w-2/3 mx-auto mt-5">
-                    <Link to={`/product-details${_id}`} className="w-full">
+                    <Link to={`/product-details/${_id}`} className="w-full">
                         <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-[18px] w-full hover:text-white ">View Details <MdDetails className="text-3xl" /></button>
                     </Link>
                 </div>

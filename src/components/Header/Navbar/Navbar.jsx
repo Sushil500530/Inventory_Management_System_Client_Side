@@ -11,13 +11,11 @@ import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 // import useAdmin from "../../../Hooks/useAdmin";
 import useRole from "../../../Hooks/useRole";
-import Loading from "../../Shared/Loading";
 
 const Navbar = () => {
     const { user, logoutUser } = useAuth();
     // const [isAdmin]= useAdmin();
-    const [users, , isLoading] = useRole();
-    console.log(users);
+    const [users] = useRole();
 
     const handleLogout = () => {
         const toastId = toast.loading('logout proccessing....');
@@ -27,9 +25,7 @@ const Navbar = () => {
             })
             .catch(() => { })
     }
-    if(isLoading){
-        return <Loading />
-    }
+
     return (
         <div className=" w-full dark:bg-zinc-900">
             <nav>

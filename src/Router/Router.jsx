@@ -22,6 +22,7 @@ import AdminHome from "../layouts/Dashboard/System Admin/AdminHome/AdminHome";
 import ManagerShop from "../layouts/Dashboard/System Admin/Manager Shop/ManagerShop";
 import GuestHome from "../layouts/Dashboard/Guest/GuestHome";
 import Document from "../layouts/Dashboard/Guest/Document";
+import SingleProduct from "../Pages/Home/Shop/SingleProduct";
 
 const Router = createBrowserRouter([
     {
@@ -44,6 +45,11 @@ const Router = createBrowserRouter([
             {
                 path:'create-shop',
                 element: <PrivetRoute><CreateShop /></PrivetRoute>
+            },
+            {
+                path:'product-details/:id',
+                element: <PrivetRoute><SingleProduct /></PrivetRoute>,
+                loader : ({params}) => fetch(`http://localhost:5000/all-product/${params.id}`)
             },
         ]
     },

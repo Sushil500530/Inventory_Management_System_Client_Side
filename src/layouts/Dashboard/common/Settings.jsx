@@ -6,8 +6,7 @@ import Loading from "../../../components/Shared/Loading";
 
 const Settings = () => {
     const { user } = useAuth();
-    const [getRole, , isLoading] = useRole();
-    const currentUser = getRole.filter(usr => usr?.email == user?.email)
+    const [users, , isLoading] = useRole();
     if (isLoading) {
         return <Loading />
     }
@@ -37,7 +36,7 @@ const Settings = () => {
                             />}
                         </a>
                         <p className='mt-7 py-1 px-4 text-base text-white bg-pink-500 rounded-full'>
-                            {currentUser[0]?.role.toUpperCase()}
+                            {users?.role.toUpperCase()}
                         </p>
                         <div className='p-5 mt-4 rounded-lg w-full'>
                             <div className='w-full text-gray-700 space-y-3 flex items-center flex-col md:flex-row lg:flex-row  md:justify-between lg:justify-evenly'>

@@ -9,10 +9,13 @@ const ShopCollection = () => {
         return <Loading />
     }
     return (
-        <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-12">
-           {
-            allProducts?.map(product => <Collection key={product?._id} product={product} /> )
-           }
+        <div>
+            <h2 className="text-center text-4xl font-bold mt-12">All <span className='text-fuchsia-500'>Categories</span> Shop Products Here🛒</h2>
+            <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-12">
+                {
+                    allProducts?.map(product => <Collection key={product?._id} product={product} />)
+                }
+            </div>
         </div>
     );
 };
