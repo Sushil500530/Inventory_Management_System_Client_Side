@@ -4,15 +4,42 @@ import Loading from "../../../components/Shared/Loading";
 import { RiSlideshowFill } from "react-icons/ri";
 import GuestRow from "./GuestRow";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const GuestHome = () => {
     const [products, refetch, isLoading] = useSaleCollection();
+    const axiosSecure = useAxiosSecure();
 
     // console.log(currentPrice);
-    const totalPrice = products?.reduce((total, currentItem) => total + parseInt(currentItem.product_cost), 0);
-
-    const handleDelete = (product) => {
-        console.log('delete clicked', product);
+    const totalPrice = products?.reduce((total, currentItem) => total + parseInt(currentItem?.currentPrice), 0);
+    // console.log(products);
+    const handleDelete = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+              axiosSecure.delete(`/seles-product-delete/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Product has been deleted.",
+                                icon: "success",
+                                timer: 1000
+                            });
+                        }
+                    })
+            }
+        });
     }
     if (isLoading) {
         return <Loading />
@@ -20,6 +47,7 @@ const GuestHome = () => {
     return (
         <div className="w-[90%] mx-auto">
             <h3 className="text-xl font-bold text-center my-4">My Ordered All Product</h3>
+            <h3 className="text-xl font-bold text-center my-4">Total Price: $ {totalPrice}</h3>
             <div className="flex justify-evenly my-4">
                 <h3 className="text-xl font-bold text-center">Total Product : {products?.length}</h3>
                 {
@@ -58,8 +86,8 @@ const GuestHome = () => {
                         <h1 className="text-2xl font-bold">Order Products is Not Found</h1> <br />
                         <h1 className="text-2xl font-bold">Please Order First!</h1>
                         <Link to="/">
-                        <button className="btn mt-5 bg-gradient-to-r from-purple-500 to-pink-500 text-[18px] hover:text-white">Show Here <RiSlideshowFill  className="text-[22px]" /></button>
-                    </Link> 
+                            <button className="btn mt-5 bg-gradient-to-r from-purple-500 to-pink-500 text-[18px] hover:text-white">Show Here <RiSlideshowFill className="text-[22px]" /></button>
+                        </Link>
                     </div>
                 </>
             }

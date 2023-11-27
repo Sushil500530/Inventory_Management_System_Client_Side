@@ -35,6 +35,7 @@ const CreateShop = () => {
             await axiosSecure.patch('/managers', create_shop)
             .then(res => {
                 if (res.data?.insertedId) {
+                    setLoading(false)
                     Swal.fire({
                         title: "Create Successfull!",
                         text: "You clicked the button!",

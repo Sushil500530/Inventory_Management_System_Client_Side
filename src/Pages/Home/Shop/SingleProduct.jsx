@@ -18,17 +18,22 @@ const SingleProduct = () => {
     const [, refetch,] = useSaleCollection();
     const axiosSecure = useAxiosSecure();
     // console.log(Object.keys(product).join(","));
-    const { product_name, quantity, product_cost, image, discount, description, location, owner_name, email } = product || {};
+    const {_id, product_name, quantity, product_cost, image, discount, description, location, owner_name, email } = product || {};
     const findEmail = managers?.filter(item => item?.email == email);
-
+    const previousPrice = parseInt(product_cost)
+    const discountRange = parseInt(discount)
+    const priceCount = (discountRange / 100) * previousPrice;
+    const currentPrice = previousPrice - priceCount;
+    // console.log(currentPrice);
     const handleBuyProduct = async () => {
         try {
             const buyProduct = {
+                menuId: _id,
                 product_name,
                 quantity,
                 product_cost,
                 image,
-                discount,
+                currentPrice,
                 description,
                 location,
                 buyer_name: user?.displayName,

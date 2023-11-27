@@ -2,11 +2,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 const GuestRow = ({ product, index, handleDelete }) => {
     // console.log(Object.keys(product).join(","));
-    const { _id, product_name, quantity, product_cost, image, discount, description, location, buyer_name, email } = product || {};
-    const previousPrice = parseInt(product_cost);
-    const discountPrice = parseInt(discount);
-    const priceCount = (discountPrice / 100) * previousPrice;
-    const currentPrice = previousPrice - priceCount;
+    const {  product_name, product_cost, image, currentPrice } = product || {};
     // console.log();
     console.log(currentPrice);
 
