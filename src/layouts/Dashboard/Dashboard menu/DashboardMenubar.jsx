@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import useAdmin from "../../../Hooks/useAdmin";
 import useRole from "../../../Hooks/useRole";
 import GuestMenu from "../Guest/GuestMenu";
+import useSaleCollection from "../../../Hooks/useSaleCollection";
 
 const DashboardMenubar = ({ isActive }) => {
     const [toggle, setToggle] = useState(false);
@@ -19,7 +20,8 @@ const DashboardMenubar = ({ isActive }) => {
     const [isAdmin] = useAdmin();
     console.log(isAdmin);
     const [users] = useRole();
-    console.log(users.role);
+    const [products,refetch,isLoading] = useSaleCollection();
+    // console.log(products);
     const navigate = useNavigate();
     // if(isLoading){
     //     return <Loading />

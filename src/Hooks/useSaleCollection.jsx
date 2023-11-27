@@ -5,14 +5,14 @@ import useAxiosSecure from "./useAxiosSecure";
 const useSaleCollection = () => {
     const { user } =useAuth();
     const axiosSecure = useAxiosSecure();
-    const {data:products=[],isLoading} = useQuery({
+    const {data:products=[],refetch,isLoading} = useQuery({
         queryKey:['sales', user?.email],
         queryFn: async() => {
-            const res = await axiosSecure.get(`/sales?email=${user.email}`);
+            const res = await axiosSecure.get(`/seles-product?email=${user?.email}`);
             return res.data
         }
     })
-    return [products,isLoading]
+    return [products,refetch,isLoading]
 };
 
 export default useSaleCollection;

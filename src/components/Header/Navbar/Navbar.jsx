@@ -1,7 +1,7 @@
 import { MdLogin, MdOutlineSlideshow } from "react-icons/md";
 import { GiArchiveRegister } from "react-icons/gi";
 import MenuList from "../../Shared/Menulist/MenuList";
-import { FaHome, FaShopify } from "react-icons/fa";
+import { FaCartArrowDown, FaHome, FaShopify } from "react-icons/fa";
 import Logo from "./Logo";
 import { MdDashboardCustomize } from "react-icons/md";
 import profile from '../../../assets/image/authentication/profile.png'
@@ -11,10 +11,12 @@ import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 // import useAdmin from "../../../Hooks/useAdmin";
 import useRole from "../../../Hooks/useRole";
+import useSaleCollection from "../../../Hooks/useSaleCollection";
 
 const Navbar = () => {
     const { user, logoutUser } = useAuth();
     // const [isAdmin]= useAdmin();
+    const [products,refetch,] = useSaleCollection();
     const [users] = useRole();
 
     const handleLogout = () => {
@@ -25,6 +27,7 @@ const Navbar = () => {
             })
             .catch(() => { })
     }
+    refetch()
 
     return (
         <div className=" w-full dark:bg-zinc-900">
@@ -53,8 +56,11 @@ const Navbar = () => {
                           {
                             users?.role === "manager" && <MenuList address={'dashboard/manager'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />    
                           }
+                          
                           {
-                            users?.role === "guest" && <MenuList address={'dashboard/guest-home'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />    
+                            users?.role === "guest" && <Link to={'dashboard/guest-home'}>
+                            <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span> 
+                            </Link>   
                           }
                             {
                                 user ? <><div className="avatar flex items-center justify-center">
