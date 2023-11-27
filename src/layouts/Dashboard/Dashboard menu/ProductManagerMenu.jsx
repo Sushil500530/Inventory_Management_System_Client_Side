@@ -6,7 +6,7 @@ import { IoBagCheckOutline } from "react-icons/io5";
 
 const ProductManagerMenu = () => {
     return (
-        <>
+        <div className="space-y-1">
             <MenuList address={'manager'} linkTitle={'Product Manager'} icon={AiFillHome} />
             <MenuList address={'product-add'} linkTitle={'Product Add'} icon={MdAddShoppingCart} />
             <MenuList address={'products-section'} linkTitle={'Products Section'} icon={FaProductHunt} />
@@ -14,7 +14,7 @@ const ProductManagerMenu = () => {
             <MenuList address={'checkout'} linkTitle={'Checkout'} icon={IoBagCheckOutline} />
             <MenuList address={'subscription-and-payment'} linkTitle={'Subscription and Payment'} icon={MdOutlinePayment} />
             <MenuList address={'sale-summary'} linkTitle={'Sale Summary'} icon={FaBook} />
-        </>
+        </div>
     );
 };
 

@@ -24,6 +24,7 @@ import GuestHome from "../layouts/Dashboard/Guest/GuestHome";
 import Document from "../layouts/Dashboard/Guest/Document";
 import SingleProduct from "../Pages/Home/Shop/SingleProduct";
 import PaymentSection from "../layouts/Dashboard/Guest/Payment/PaymentSection";
+import PaymentHistory from "../layouts/Dashboard/Guest/Payment/PaymentHistory";
 
 const Router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ const Router = createBrowserRouter([
             {
                 path:'payment',
                 element:<PrivetRoute><PaymentSection /></PrivetRoute>
+            },
+            {
+                path:'payment-history',
+                element:<PrivetRoute><PaymentHistory /></PrivetRoute>
             },
             // product manager section 
             {

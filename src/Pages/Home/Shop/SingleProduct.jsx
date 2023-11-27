@@ -39,7 +39,7 @@ const SingleProduct = () => {
                 buyer_name: user?.displayName,
                 email: user?.email,
             }
-            await axiosSecure.post('/seles-product', buyProduct)
+            await axiosSecure.post('/sales-product', buyProduct)
                 .then(res => {
                     if (res.data?.insertedId) {
                         Swal.fire({

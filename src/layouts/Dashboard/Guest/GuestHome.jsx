@@ -26,7 +26,7 @@ const GuestHome = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-              axiosSecure.delete(`/seles-product-delete/${id}`)
+              axiosSecure.delete(`/sales-product-delete/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
