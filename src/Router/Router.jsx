@@ -23,6 +23,7 @@ import ManagerShop from "../layouts/Dashboard/System Admin/Manager Shop/ManagerS
 import GuestHome from "../layouts/Dashboard/Guest/GuestHome";
 import Document from "../layouts/Dashboard/Guest/Document";
 import SingleProduct from "../Pages/Home/Shop/SingleProduct";
+import PaymentSection from "../layouts/Dashboard/Guest/Payment/PaymentSection";
 
 const Router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ const Router = createBrowserRouter([
             {
                 path:'doc-type',
                 element:<PrivetRoute><Document /></PrivetRoute>
+            },
+            {
+                path:'payment',
+                element:<PrivetRoute><PaymentSection /></PrivetRoute>
             },
             // product manager section 
             {
