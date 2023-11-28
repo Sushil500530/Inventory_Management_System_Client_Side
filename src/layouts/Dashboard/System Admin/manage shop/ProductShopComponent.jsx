@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FaTrashAlt } from "react-icons/fa";
 
-const ProductShopComponent = ({ product }) => {
+const ProductShopComponent = ({ handleDelete,product }) => {
     const { product_name, product_cost, image, description, location } = product || {};
     return (
         <div className="card bg-base-100 shadow-xl pb-6">
@@ -18,7 +18,7 @@ const ProductShopComponent = ({ product }) => {
                     <p className="text-gray-600 text-[18px] font-bold">Location : <span className="text-black"> {location} </span></p>
                 </div>
                 <div className="card-actions mt-5 flex  justify-center items-center">
-                    <button className="btn hover:text-white bg-gradient-to-r from-purple-500 to-pink-500 px-20 text-[18px]">Delete <FaTrashAlt className="text-2xl ml-3" /></button>
+                    <button onClick={() => handleDelete(product)} className="btn hover:text-white bg-gradient-to-r from-purple-500 to-pink-500 px-20 text-[18px]">Delete <FaTrashAlt className="text-2xl ml-3" /></button>
                 </div>
             </div>
         </div>

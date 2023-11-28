@@ -1,5 +1,6 @@
 import { FaBook } from "react-icons/fa";
 import { FcManager } from "react-icons/fc";
+import { GrStorage } from "react-icons/gr";
 import { HiUserGroup } from "react-icons/hi";
 import MenuList from "../../../components/Shared/Menulist/MenuList";
 import { AiFillHome } from "react-icons/ai";
@@ -10,6 +11,7 @@ const AdminMenu = () => {
             {/* admin  */}
             <MenuList address={'admin-home'} linkTitle={'Admin Home'} icon={AiFillHome} />
             <MenuList address={'manager-shop'} linkTitle={'Manager Shop'} icon={FcManager} />
+            <MenuList address={'all-prodoucts'} linkTitle={'All Products'} icon={GrStorage} />
             <MenuList address={'admin-sale-summary'} linkTitle={'Sale Summary'} icon={FaBook} />
             <MenuList address={'all-users'} linkTitle={'All Users'} icon={HiUserGroup} />
         </div>

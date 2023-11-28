@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { FaTrashAlt, } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Loading from "../../../../components/Shared/Loading";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -14,8 +15,32 @@ const AllUsers = () => {
         }
     })
 
-    const handleDelete = () => {
-        console.log('delete clicked');
+    const handleDelete = (user) => {
+        console.log(user);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+              axiosSecure.delete(`/user/${user?._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "User has been deleted.",
+                                icon: "success",
+                                timer: 1000
+                            });
+                        }
+                    })
+            }
+        });
     }
     const handleMakeAdmin = () => {
         console.log('meking admin');

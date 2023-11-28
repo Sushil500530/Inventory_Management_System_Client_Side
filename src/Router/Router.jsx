@@ -25,6 +25,7 @@ import Document from "../layouts/Dashboard/Guest/Document";
 import SingleProduct from "../Pages/Home/Shop/SingleProduct";
 import PaymentSection from "../layouts/Dashboard/Guest/Payment/PaymentSection";
 import PaymentHistory from "../layouts/Dashboard/Guest/Payment/PaymentHistory";
+import AllProducts from "../layouts/Dashboard/System Admin/all product/AllProducts";
 
 const Router = createBrowserRouter([
     {
@@ -114,6 +115,10 @@ const Router = createBrowserRouter([
             {
                 path:'manager-shop',
                 element:<AdminRoute><ManagerShop /></AdminRoute>
+            },
+            {
+                path:'all-prodoucts',
+                element:<AdminRoute><AllProducts /></AdminRoute>
             },
             {
                 path:'admin-sale-summary',
