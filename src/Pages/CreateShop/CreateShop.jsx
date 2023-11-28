@@ -7,14 +7,27 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { imageUpload } from "../../api/auth";
 import Swal from "sweetalert2";
+import useManager from "../../Hooks/useManager";
 
 const CreateShop = () => {
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth()
     const [loading, setLoading] = useState(false);
+    const [managers] = useManager()
+    const currentUser = managers?.filter(item =>item?.email == user?.email);
+   
     const handleCreateShop = async (e) => {
         e.preventDefault();
         setLoading(true);
+        if(currentUser[0]?.role === 'manager'){
+          
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Your Shop is Existed in!",
+              });
+         return setLoading(false)
+        }
         const form = e.target;
         const shop_name = form.shop_name.value;
         const image = form.image.files[0];
@@ -46,7 +59,8 @@ const CreateShop = () => {
             })
         }
         catch (error) {
-            toast.error(error.message);
+            setLoading(false)
+            toast.error('Please Choose file or select Image!');
         }
     }
     return (

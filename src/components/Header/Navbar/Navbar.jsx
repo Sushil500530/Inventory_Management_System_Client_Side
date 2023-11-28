@@ -18,7 +18,6 @@ const Navbar = () => {
     // const [isAdmin]= useAdmin();
     const [products,refetch,] = useSaleCollection();
     const [users] = useRole();
-
     const handleLogout = () => {
         const toastId = toast.loading('logout proccessing....');
         logoutUser()
@@ -57,6 +56,11 @@ const Navbar = () => {
                             users?.role === "manager" && <MenuList address={'dashboard/manager'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />    
                           }
                           
+                          {
+                            users?.role === "manager" && <Link to={'dashboard/guest-home'}>
+                            <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span> 
+                            </Link>   
+                          }
                           {
                             users?.role === "guest" && <Link to={'dashboard/guest-home'}>
                             <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span> 

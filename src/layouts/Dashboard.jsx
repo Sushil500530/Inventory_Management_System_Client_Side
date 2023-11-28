@@ -27,10 +27,12 @@ const Dashboard = () => {
                     <AiOutlineBars className='h-5 w-5' />
                 </button>
             </div>
-            <div className="flex h-full">
+            <div className="flex">
                 {/* dashboard menu bar  */}
-             <DashboardMenubar isActive={isActive} />
-              
+                <div className="min-h-screen">
+                    <DashboardMenubar isActive={isActive} />
+                </div>
+
                 {/* dashboard content */}
                 <div className="flex-1">
                     <Outlet></Outlet>

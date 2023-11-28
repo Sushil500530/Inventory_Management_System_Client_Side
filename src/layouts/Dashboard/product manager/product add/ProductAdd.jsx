@@ -8,12 +8,21 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import IconBar from "../../../../components/Shared/IconBar";
+import useManager from "../../../../Hooks/useManager";
+
+
 const ProductAdd = () => {
     const { user } = useAuth();
     const [loading, setLoading] = useState(false);
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
+    const [managers] = useManager()
+    // console.log(managers);
+    console.log(user?.email);
 
+    const findEmail = managers?.filter(item => item?.email == user?.email);
+
+    console.log(findEmail[0]?.shop_logo);
     const handleAddedProduct = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -25,6 +34,8 @@ const ProductAdd = () => {
         const product_cost = form.product_cost.value;
         const product_profit = form.product_profit.value;
         const discount = form.discount.value;
+        const shop_logo = findEmail[0]?.shop_logo;
+        const shop_name = findEmail[0]?.shop_name;
         const owner_name = user?.displayName;
         const email = user?.email;
         const location = form.location.value;
@@ -40,6 +51,8 @@ const ProductAdd = () => {
                 discount,
                 description,
                 location,
+                shop_logo,
+                shop_name,
                 email,
                 owner_name
             };

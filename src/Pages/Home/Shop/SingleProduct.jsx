@@ -1,5 +1,4 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
-import useManager from "../../../Hooks/useManager";
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css';
 import { FaCartPlus, FaFastBackward } from "react-icons/fa";
@@ -12,14 +11,12 @@ import useSaleCollection from "../../../Hooks/useSaleCollection";
 
 const SingleProduct = () => {
     const product = useLoaderData();
-    const [managers] = useManager();
     const navigate = useNavigate();
     const { user } = useAuth();
     const [, refetch,] = useSaleCollection();
     const axiosSecure = useAxiosSecure();
     // console.log(Object.keys(product).join(","));
-    const {_id, product_name, quantity, product_cost, image, discount, description, location, owner_name, email } = product || {};
-    const findEmail = managers?.filter(item => item?.email == email);
+    const {_id, product_name, quantity,shop_logo, product_cost, image, discount, description, location, owner_name,shop_name, email } = product || {};
     const previousPrice = parseInt(product_cost)
     const discountRange = parseInt(discount)
     const priceCount = (discountRange / 100) * previousPrice;
@@ -29,6 +26,7 @@ const SingleProduct = () => {
         try {
             const buyProduct = {
                 menuId: _id,
+                shop_name,
                 product_name,
                 quantity,
                 product_cost,
@@ -78,16 +76,12 @@ const SingleProduct = () => {
                         <div>
                             <h3 className="text-2xl font-bold text-gray-600">Contact Us</h3>
                             <hr className="w-[130px] border border-black mt-3 mb-5" />
-                            {
-                                findEmail[0]?.shop_name ? <h2 className="text-xl text-gray-600 my-3 font-bold">Company Name: <span className="text-black">{findEmail[0]?.shop_name}</span></h2> : <h2 className="text-xl text-gray-600 my-3 font-bold">Company Name: <span className="text-black">No Found</span></h2>
-                            }
+                             <h2 className="text-xl text-gray-600 my-3 font-bold">Company Name: <span className="text-black">{shop_name}</span></h2> 
                             <div className="avatar flex items-center gap-5">
                                 <h2 className="text-xl text-gray-600 my-2 font-bold">Cmpany Logo:</h2>
-                                {
-                                    findEmail[0]?.shop_logo ? <div className="w-24 rounded-full ring ring-offset-base-100 ">
-                                        <img src={findEmail[0]?.shop_logo} />
-                                    </div> : <span className="text-black text-xl font-bold">No Found</span>
-                                }
+                               <div className="w-24 rounded-full ring ring-offset-base-100 ">
+                                        <img src={shop_logo} className="w-full h-full" />
+                                    </div> 
                             </div>
                         </div>
                         <div>

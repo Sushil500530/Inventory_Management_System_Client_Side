@@ -26,6 +26,7 @@ import SingleProduct from "../Pages/Home/Shop/SingleProduct";
 import PaymentSection from "../layouts/Dashboard/Guest/Payment/PaymentSection";
 import PaymentHistory from "../layouts/Dashboard/Guest/Payment/PaymentHistory";
 import AllProducts from "../layouts/Dashboard/System Admin/all product/AllProducts";
+import AdminSaleSummary from "../layouts/Dashboard/System Admin/admin sale summary/AdminSaleSummary";
 
 const Router = createBrowserRouter([
     {
@@ -122,7 +123,7 @@ const Router = createBrowserRouter([
             },
             {
                 path:'admin-sale-summary',
-                element:<AdminRoute><SaleSummary /></AdminRoute>
+                element:<AdminRoute><AdminSaleSummary /></AdminRoute>
             },
             {
                 path:'all-users',
