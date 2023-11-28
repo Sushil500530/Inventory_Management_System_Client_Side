@@ -2,11 +2,11 @@
     background-image: linear-gradient(to left, rgb(228, 197, 234), #c34ee6);
 }
 .product-component{
-    background-image: linear-gradient(to left, rgb(250, 255, 253), rgb(5, 136, 197));
+    background-image: linear-gradient(to left, rgb(207, 222, 232), rgb(5, 136, 197));
 }
 .sale-component{
-    background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(197, 101, 5));
+    background-image: linear-gradient(to left, rgb(237, 214, 214), rgb(197, 101, 5));
 }
 .user-component{
-    background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(197, 5, 37));
+    background-image: linear-gradient(to left, rgb(244, 221, 221), rgb(197, 5, 37));
 }

@@ -3,6 +3,7 @@ import { HiClipboardDocumentCheck } from "react-icons/hi2";
 import { HiUserGroup} from "react-icons/hi";
 import './adminHome.css'
 import { FaCircleDollarToSlot } from "react-icons/fa6";
+import ChartSection from "./ChartSection";
 
 
 const AdminHome = () => {
@@ -40,11 +41,54 @@ const AdminHome = () => {
                         <h2 className="text-5xl font-bold text-center">50</h2>
                         <div className="stat-desc pl-2 font-medium">↗︎ 400 (22%)</div>
                     </div>
-
-
                 </div>
                 <div className="flex gap-8">
-                
+
+                    <ChartSection />
+                  {/* bar chart  */}
+                    {/* <div className="w-1/2">
+                    <BarChart
+                        width={500}
+                        height={300}
+                        data={chartData}
+                        margin={{
+                            top: 20,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="category" />
+                        <YAxis />
+                        <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+                            {chartData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index % 6]} />
+                            ))}
+                        </Bar>
+                    </BarChart>
+                </div> */}
+                    {/* <div className="w-1/2">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <PieChart width={400} height={400}>
+                            <Pie
+                                data={pieChartData}
+                                cx="50%"
+                                cy="50%"
+                                labelLine={false}
+                                label={renderCustomizedLabel}
+                                outerRadius={80}
+                                fill="#8884d8"
+                                dataKey="value"
+                            >
+                                {pieChartData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                ))}
+                            </Pie>
+                            <Legend></Legend>
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div> */}
                 </div>
             </div>
         </div>
