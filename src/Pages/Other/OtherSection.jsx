@@ -1,9 +1,12 @@
 import useAllProduct from "../../Hooks/useAllProduct";
+import Loading from "../../components/Shared/Loading";
 import Collection from "../Home/Shop/Collection";
 
 const OtherSection = () => {
     const [allProducts, ,isLoading] = useAllProduct();
-    console.log(allProducts.slice(10,18));
+    if(isLoading){
+        return <Loading />
+    }
     return (
         <div className="my-12">
             <h2 className="text-4xl font-bold text-center my-12">Other Advance Brand <span className="text-fuchsia-500">Car</span>..!</h2>
