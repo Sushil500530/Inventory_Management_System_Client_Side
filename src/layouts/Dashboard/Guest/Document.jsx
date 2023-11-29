@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { MdCreate } from "react-icons/md";
+import { Helmet } from "react-helmet-async";
 
 const Document = () => {
     return (
         <div className="w-[90%] mx-auto text-center">
+              <Helmet>
+                <title>Promotion | Dashboard</title>
+            </Helmet>
             <h2 className="text-2xl font-bold text-start mt-5">Message Here🧨🧨</h2>
             <h3 className="text-xl font-bold text-center my-8">Be a Manager🤠</h3>
             <p className="text-xl font-medium capitalize"> Do you want to be a shop manager? Then click here to add your product</p>

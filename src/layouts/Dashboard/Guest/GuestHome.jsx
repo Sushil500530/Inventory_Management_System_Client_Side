@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useSaleCollection from "../../../Hooks/useSaleCollection";
+import { Helmet } from "react-helmet-async";
 
 const GuestHome = () => {
     const [products, refetch, isLoading] = useSaleCollection();
@@ -46,6 +47,9 @@ const GuestHome = () => {
     }
     return (
         <div className="w-[90%] mx-auto">
+              <Helmet>
+                <title>Guest Home | Dashboard</title>
+            </Helmet>
             <h3 className="text-xl font-bold text-center my-4">My Ordered All Product</h3>
             <h3 className="text-xl font-bold text-center my-4">Total Price: $ {totalPrice}</h3>
             <div className="flex justify-evenly my-4">

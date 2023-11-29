@@ -8,6 +8,7 @@ import useAuth from "../../Hooks/useAuth";
 import { imageUpload } from "../../api/auth";
 import Swal from "sweetalert2";
 import useRole from "../../Hooks/useRole";
+import { Helmet } from "react-helmet-async";
 
 const CreateShop = () => {
     const axiosSecure = useAxiosSecure();
@@ -64,6 +65,9 @@ const CreateShop = () => {
     }
     return (
         <div className="container mx-auto mb-12">
+              <Helmet>
+                <title>Create Shop | Inventory M </title>
+            </Helmet>
             <h2 className="text-2xl font-bold text-center my-12 flex items-center justify-center gap-2">Create a New Shop <IconBar icon={MdAddShoppingCart} /></h2>
             <form onSubmit={handleCreateShop}>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>

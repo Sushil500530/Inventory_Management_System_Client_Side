@@ -6,11 +6,11 @@ import useAuth from "../../Hooks/useAuth";
 import Loading from "../../components/Shared/Loading";
 
 const AdminRoute = ({children}) => {
-    const { user, isLoading } = useAuth();
+    const { user, loading } = useAuth();
     const [isAdmin, isAdminLoading] = useAdmin();
     console.log(isAdmin);
     const location = useLocation();
-    if (isLoading || isAdminLoading) {
+    if (loading || isAdminLoading) {
         return <Loading />
     }
     if (user && isAdmin) {

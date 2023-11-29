@@ -3,7 +3,7 @@
 const HanadleToggleBtn = ({ toggler }) => {
     return (
         <>
-            <label htmlFor='Toggle3' className='inline-flex w-full justify-center items-center px-2 rounded-md cursor-pointer text-gray-800'
+            <label htmlFor='Toggle3' className='inline-flex w-full justify-center items-center rounded-md cursor-pointer text-gray-800'
             >
                 <input onChange={toggler} id='Toggle3' type='checkbox' className='hidden peer'
                 />

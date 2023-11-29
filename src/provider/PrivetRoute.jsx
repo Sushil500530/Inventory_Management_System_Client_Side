@@ -4,10 +4,10 @@ import useAuth from "../Hooks/useAuth";
 import Loading from "../components/Shared/Loading";
 
 const PrivetRoute = ({children}) => {
-    const {user,isLoading} = useAuth();
+    const {user,loading} = useAuth();
     const location = useLocation();
 
-    if(isLoading){
+    if(loading){
         return <Loading />
     }
     if(user){

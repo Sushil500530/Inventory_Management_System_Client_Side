@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import IconBar from "../../../../components/Shared/IconBar";
 import useManager from "../../../../Hooks/useManager";
+import { Helmet } from "react-helmet-async";
 
 
 const ProductAdd = () => {
@@ -78,6 +79,9 @@ const ProductAdd = () => {
     }
     return (
         <div className="w-[90%] mx-auto">
+              <Helmet>
+                <title>Product Added | Inventory M</title>
+            </Helmet>
             <h3 className="text-3xl text-center font-bold mt-12 mb-5 flex items-center justify-center gap-2">Add Product <IconBar icon={TbPlaylistAdd} />  </h3>
             <div className="container mx-auto mt-12">
                 <form onSubmit={handleAddedProduct}>

@@ -10,16 +10,16 @@ export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider()
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [isLoading,setIsLoading] = useState(true);
+    const [loading,setLoading] = useState(true);
     const axiosPublic = useAxiosPublic();
     const createUser = (email,password) => {
-        setIsLoading(true);
+        setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password);
     }
 
     
     const loginUser = (email,password) => {
-        setIsLoading(true);
+        setLoading(true);
         return signInWithEmailAndPassword(auth,email,password);
     }
      
@@ -30,11 +30,11 @@ const AuthProvider = ({ children }) => {
     }
 
     const googleSignIn = () => {
-        setIsLoading(true);
+        setLoading(true);
         return signInWithPopup(auth,googleProvider);
     }
     const logoutUser = () => {
-        setIsLoading(true);
+        setLoading(true);
         return signOut(auth)
     }
 
@@ -49,13 +49,13 @@ const AuthProvider = ({ children }) => {
                     res.data
                     if(res.data.token){
                         localStorage.setItem('access-token', res.data.token);
-                        setIsLoading(false)
+                        setLoading(false)
                     }
                 })
             }
             else{
                 localStorage.removeItem('access-token')
-                setIsLoading(false)
+                setLoading(false)
             }
             console.log('current user is ---->', currentUser);
         })
@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
-        isLoading,
+        loading,
         createUser,
         loginUser,
         logoutUser,

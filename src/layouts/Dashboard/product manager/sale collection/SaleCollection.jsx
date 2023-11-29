@@ -3,6 +3,7 @@ import useAllPayments from "../../../../Hooks/useAllPayments";
 import useAuth from "../../../../Hooks/useAuth";
 import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const SaleCollection = () => {
     const {user} = useAuth();
@@ -11,6 +12,9 @@ const SaleCollection = () => {
     console.log(salesData);
     return (
         <div className="w-[90%] mx-auto bg-base-100">
+              <Helmet>
+                <title>Sale Collection | Inventory M</title>
+            </Helmet>
             <h3 className="text-3xl text-center font-bold mt-12 mb-5 flex items-center justify-center gap-2">Sale Collection🧨🧨</h3>
             {/* input field  */}
             <div className="w-2/3 mx-auto flex items-center ">

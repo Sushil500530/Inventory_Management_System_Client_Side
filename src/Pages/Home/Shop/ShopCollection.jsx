@@ -14,16 +14,12 @@ const ShopCollection = () => {
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(false)
 
-
-    const numberOfPages = Math.ceil(count / itemsPerPage);
-    const pages = [...Array(numberOfPages).keys()];
-
     useEffect(() => {
-        fetch('http://localhost:5000/productsCount')
+        fetch('http://localhost:5000/products-count')
             .then(res => res.json())
             .then(data => setCount(data.count))
     }, [])
-
+console.log('count data is --->',count);
     useEffect(() => {
         setLoading(true)
         fetch(`http://localhost:5000/all-products?page=${currentPage}&size=${itemsPerPage}`)
@@ -31,6 +27,11 @@ const ShopCollection = () => {
             .then(data => setProducts(data))
         setLoading(false)
     }, [currentPage, itemsPerPage]);
+    console.log('product data is --->',products);
+    const numberOfPages = Math.ceil(count / itemsPerPage);
+    const pages = [...Array(numberOfPages).keys()];
+
+
 
     const handleItemsPerPageChange = e => {
         const valu = parseInt(e.target.value)

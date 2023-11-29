@@ -4,6 +4,7 @@ import { FaTrashAlt, } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Loading from "../../../../components/Shared/Loading";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -13,7 +14,7 @@ const AllUsers = () => {
             const res = await axiosSecure.get('/users')
             return res.data;
         }
-    })
+    });
 
     const handleDelete = (user) => {
         console.log(user);
@@ -42,8 +43,13 @@ const AllUsers = () => {
             }
         });
     }
-    const handleMakeAdmin = () => {
-        console.log('meking admin');
+    const handlePromotional = () => {
+        Swal.fire({
+            title: "Wow..!Promotional!🎉",
+            text: "Promotional Message was sent successfully !",
+            icon: "success"
+          });
+    
     }
     if (isLoading) {
         return <Loading />
@@ -51,6 +57,9 @@ const AllUsers = () => {
 
     return (
         <div className="w-[90%] mx-auto">
+              <Helmet>
+                <title>All User | Admin Home</title>
+            </Helmet>
             <div className="flex justify-evenly my-4">
                 <h3 className="text-xl font-bold text-center">Manage All Users</h3>
                 <h3 className="text-xl font-bold text-center">Total Users : {users?.length}</h3>
@@ -77,7 +86,7 @@ const AllUsers = () => {
                                     <td>{user?.name}</td>
                                     <td>{user?.email}</td>
                                     <td>{
-                                        user?.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className="bg-gradient-to-r from-purple-500 to-pink-500 btn text-white text-base hover:text-black"><MdEmail />Promotional</button>
+                                        user?.role === 'admin' ? 'Admin' : <button onClick={() => handlePromotional(user)} className="bg-gradient-to-r from-purple-500 to-pink-500 btn text-white text-base hover:text-black"><MdEmail />Promotional</button>
                                     }</td>
                                     <td>{user?.shop_name ? user?.shop_name :
                                         "No Have"

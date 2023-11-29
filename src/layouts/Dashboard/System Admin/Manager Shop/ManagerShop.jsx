@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import useManager from "../../../../Hooks/useManager";
 import Loading from "../../../../components/Shared/Loading";
 
@@ -9,6 +10,9 @@ const ManagerShop = () => {
     }
     return (
         <div className="w-[90%] mx-auto">
+              <Helmet>
+                <title>Manager Shop | Admin Home</title>
+            </Helmet>
             <h3 className="text-3xl text-center font-bold  flex items-center justify-center gap-2 my-12">Manage Shop</h3>
             <div className="mt-5">
                 <table className="table w-full ">

@@ -13,7 +13,7 @@ const Dashboard = () => {
     return (
         <Container>
             <Helmet>
-                <title>Dashboard | Inventory Management</title>
+                <title>Dashboard | Inventory M</title>
             </Helmet>
             <div className='bg-gray-100 border text-gray-800 flex justify-between lg:hidden'>
                 <div>

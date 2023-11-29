@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import Footer from "../../Footer/Footer";
 import useSaleCollection from "../../../Hooks/useSaleCollection";
+import { Helmet } from "react-helmet-async";
 
 const SingleProduct = () => {
     const product = useLoaderData();
@@ -16,6 +17,7 @@ const SingleProduct = () => {
     const [, refetch,] = useSaleCollection();
     const axiosSecure = useAxiosSecure();
     // console.log(Object.keys(product).join(","));
+    // console.log('single product data is--->',product);
     const {_id, product_name, quantity,shop_logo, product_cost, image, discount, description, location, owner_name,shop_name, email } = product || {};
     const previousPrice = parseInt(product_cost)
     const discountRange = parseInt(discount)
@@ -56,6 +58,9 @@ const SingleProduct = () => {
     }
     return (
         <div>
+              <Helmet>
+                <title>Product Details | Inventory M </title>
+            </Helmet>
             <div className="flex w-full flex-col lg:flex-row gap-8 py-5 items-center justify-center mb-2">
                 <div className="lg:w-1/2 h-[620px] w-full">
                     <img src={image} className="w-full h-full rounded-lg" alt="" />

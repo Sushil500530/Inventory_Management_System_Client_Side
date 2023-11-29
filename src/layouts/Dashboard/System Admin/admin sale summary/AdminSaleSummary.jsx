@@ -2,6 +2,7 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAllPayments from "../../../../Hooks/useAllPayments";
 import Loading from "../../../../components/Shared/Loading";
+import { Helmet } from "react-helmet-async";
 
 const AdminSaleSummary = () => {
     const axiosSecure = useAxiosSecure();
@@ -21,6 +22,9 @@ const AdminSaleSummary = () => {
 
     return (
         <div className="w-[90%] mx-auto">
+              <Helmet>
+                <title>Sale Summary | Admin Home</title>
+            </Helmet>
             <h3 className="text-3xl text-center font-bold mt-10">Admin Sale <span className="text-fuchsia-500">Summary..!</span></h3>
             <div className="flex item-center justify-center mt-6 gap-10">
                 <div>
