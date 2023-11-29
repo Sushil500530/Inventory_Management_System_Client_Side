@@ -15,7 +15,7 @@ const Login = () => {
     const { register, handleSubmit,
         formState: { errors },
     } = useForm();
-   
+
     const handleLogin = async (data) => {
         console.log('button clicked', data);
         const toastId = toast.loading(' proccessing....');
@@ -41,7 +41,8 @@ const Login = () => {
                 }
             })
             .catch(() => {
-               return Swal.fire("Please Use Valid Information!");
+                toast.error('Something is went Wrong....!', { id: toastId })
+                return Swal.fire("Please Use Valid Information!");
                 // console.log(error);
                 // toast.error(error);
             })
@@ -49,6 +50,7 @@ const Login = () => {
 
     // Handle Google Signin
     const handleGoogleSignIn = async () => {
+        const toastId = toast.loading(' proccessing....');
         try {
             //2. User Registration using google
             const result = await googleSignIn()
@@ -66,7 +68,7 @@ const Login = () => {
                     .catch(err => console.error(err))
             }
             navigate(location?.state ? location.state : "/")
-            toast.success('Login Successful')
+            toast.success('Login Successful', { id: toastId })
         } catch (err) {
             console.log(err)
             toast.error(err?.message)

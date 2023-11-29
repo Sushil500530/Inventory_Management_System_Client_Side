@@ -1,4 +1,4 @@
-import { MdLogin, MdOutlineSlideshow } from "react-icons/md";
+import { MdLogin, MdOutlineDarkMode, MdOutlineSlideshow } from "react-icons/md";
 import { GiArchiveRegister } from "react-icons/gi";
 import MenuList from "../../Shared/Menulist/MenuList";
 import { FaCartArrowDown, FaHome, FaShopify } from "react-icons/fa";
@@ -9,12 +9,14 @@ import useAuth from "../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
-// import useAdmin from "../../../Hooks/useAdmin";
+import { BsSun } from "react-icons/bs";
 import useRole from "../../../Hooks/useRole";
 import useSaleCollection from "../../../Hooks/useSaleCollection";
+import useThemeMode from "../../../Hooks/useThemeMode";
 
 const Navbar = () => {
     const { user, logoutUser } = useAuth();
+    const { changeTheme, mode } = useThemeMode();
     // const [isAdmin]= useAdmin();
     const [products, refetch,] = useSaleCollection();
     const [users] = useRole();
@@ -43,6 +45,9 @@ const Navbar = () => {
                     </Link>
                     <div className="flex-none hidden lg:block">
                         <div className="flex items-center gap-2 dark:text-white">
+                        <button onClick={changeTheme} className="bg-transparent btn-sm hover:text-blue-500 transition mr-5 flex items-center justify-center">
+                                {mode === "dark" ? <BsSun className='text-3xl'></BsSun> : <MdOutlineDarkMode className='text-3xl'></MdOutlineDarkMode>}
+                            </button>
                             <MenuList address={'/'} linkTitle={'Home'} icon={FaHome} />
                             <MenuList address={'create-shop'} linkTitle={'Create Shop'} icon={FaShopify} />
                             <span >
