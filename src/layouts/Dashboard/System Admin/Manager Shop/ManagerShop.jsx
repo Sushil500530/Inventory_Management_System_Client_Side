@@ -2,14 +2,14 @@ import useManager from "../../../../Hooks/useManager";
 import Loading from "../../../../components/Shared/Loading";
 
 const ManagerShop = () => {
-    const [managers, refetch, isLoading] = useManager();
+    const [managers, , isLoading] = useManager();
     console.log(managers);
     if (isLoading) {
         return <Loading />
     }
     return (
         <div className="w-[90%] mx-auto">
-            <h3 className="text-3xl text-center font-bold  flex items-center justify-center gap-2 my-12">Manager Shop</h3>
+            <h3 className="text-3xl text-center font-bold  flex items-center justify-center gap-2 my-12">Manage Shop</h3>
             <div className="mt-5">
                 <table className="table w-full ">
                     {/* head */}
@@ -18,6 +18,7 @@ const ManagerShop = () => {
                             <th>Count</th>
                             <th>Shop Logo</th>
                             <th>Shop Name</th>
+                            <th>Email</th>
                             <th>Shop Description</th>
                             <th>Notice</th>
                         </tr>
@@ -36,7 +37,8 @@ const ManagerShop = () => {
                                         </div>
                                     </td>
                                     <td>{item?.shop_name}</td>
-                                    <td>$ {item?.description.slice(0,40)}</td>
+                                    <td>{item?.email}</td>
+                                    <td>{item?.description.slice(0,40)}</td>
                                     <td>
                                     <button className="bg-gradient-to-r from-purple-500 to-pink-500 btn text-white text-base hover:text-black">Send Notice</button>
                                     </td>

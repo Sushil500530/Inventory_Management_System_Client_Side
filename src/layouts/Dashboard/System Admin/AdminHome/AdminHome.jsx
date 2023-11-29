@@ -6,11 +6,13 @@ import { FaCircleDollarToSlot } from "react-icons/fa6";
 import ChartSection from "./ChartSection";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useRole from "../../../../Hooks/useRole";
 import Footer from "../../../../Pages/Footer/Footer";
 
 
 const AdminHome = () => {
     const axiosSecure = useAxiosSecure();
+    const [users] = useRole();
     const { data: stats = {} } = useQuery({
         queryKey: ['admin-stats'],
         queryFn: async () => {
@@ -22,14 +24,11 @@ const AdminHome = () => {
     return (
         <div className="w-[90%] mx-auto mb-12">
             <div className="w-full h-[70vh]">
-                <h2 className="text-2xl font-bold capitalize text-center my-5"><span>Hi, Wellcome </span>
-                    {/* {
-                    user?.displayName ? user?.displayName : 'Back'
-                } */}
+                <h2 className="text-2xl font-bold capitalize text-center my-5"><span className="text-4xl font-bold text-fuchsia-500">Hi</span>, Wellcome 🎁🎉<br />
+                   <span className=" text-fuchsia-500">{users?.name}</span>
                 </h2>
-                <div className=" grid grid-cols-2 lg:grid-cols-4 gap-5 items-center justify-center mt-12">
-
-                    <div className=" income-component shadow-xl  gap-1 rounded-lg flex flex-col items-center py-3">
+                <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-center justify-center mt-12">
+                    <div className=" income-component shadow-xl gap-1 rounded-lg flex flex-col items-center py-3">
                         <FaCircleDollarToSlot className="text-4xl" ></FaCircleDollarToSlot>
                         <p className="font-bold text-xl">Total Income</p>
                         <h2 className="text-5xl font-bold text-center">$ {stats?.revenue}</h2>
@@ -54,11 +53,11 @@ const AdminHome = () => {
                         <div className="stat-desc pl-2 font-medium">↗︎ 400 (22%)</div>
                     </div>
                 </div>
-                <div className="flex gap-8">
+                <div className="flex gap-8 my-12">
                     <ChartSection />
                 </div>
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 };

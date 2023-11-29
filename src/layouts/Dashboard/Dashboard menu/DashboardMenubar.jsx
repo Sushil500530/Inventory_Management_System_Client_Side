@@ -21,7 +21,7 @@ const DashboardMenubar = ({ isActive }) => {
     console.log(isAdmin);
     const [users] = useRole();
     const [products,refetch,isLoading] = useSaleCollection();
-    // console.log(products);
+    console.log(products);
     const navigate = useNavigate();
     // if(isLoading){
     //     return <Loading />

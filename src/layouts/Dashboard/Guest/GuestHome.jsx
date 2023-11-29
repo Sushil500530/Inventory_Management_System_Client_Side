@@ -1,11 +1,11 @@
 import { MdPayment } from "react-icons/md";
-import useSaleCollection from "../../../Hooks/useSaleCollection";
 import Loading from "../../../components/Shared/Loading";
 import { RiSlideshowFill } from "react-icons/ri";
 import GuestRow from "./GuestRow";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useSaleCollection from "../../../Hooks/useSaleCollection";
 
 const GuestHome = () => {
     const [products, refetch, isLoading] = useSaleCollection();

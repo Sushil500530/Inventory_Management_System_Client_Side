@@ -3,17 +3,17 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { ImSpinner9 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { FaRegCreditCard } from "react-icons/fa";
-import useSaleCollection from "../../../../Hooks/useSaleCollection";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import useSaleCollection from "../../../../Hooks/useSaleCollection";
 
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
-    const [products, refetch, ,] = useSaleCollection();
+    const [products, refetch, ,] =useSaleCollection();
     const axiosSecure = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
@@ -101,7 +101,7 @@ const CheckoutForm = () => {
                         icon: "success",
                         timer: 1000,
                     });
-                     return navigate('/dashboard/guest-home')
+                     return navigate('/dashboard/payment-history')
                 }
             }
         }

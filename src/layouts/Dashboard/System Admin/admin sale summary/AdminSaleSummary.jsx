@@ -1,11 +1,11 @@
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import useAllsaleCollection from "../../../../Hooks/useAllsaleCollection";
+import useAllPayments from "../../../../Hooks/useAllPayments";
 import Loading from "../../../../components/Shared/Loading";
 
 const AdminSaleSummary = () => {
     const axiosSecure = useAxiosSecure();
-    const [salesData, , isLoading] = useAllsaleCollection();
+    const [salesData, , isLoading] = useAllPayments();
 
     const { data: stats = {} } = useQuery({
         queryKey: ['admin-stats'],

@@ -7,20 +7,19 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { imageUpload } from "../../api/auth";
 import Swal from "sweetalert2";
-import useManager from "../../Hooks/useManager";
+import useRole from "../../Hooks/useRole";
 
 const CreateShop = () => {
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth()
     const [loading, setLoading] = useState(false);
-    const [managers] = useManager()
-    const currentUser = managers?.filter(item =>item?.email == user?.email);
-   
+    const [users] = useRole();
+
+    console.log(users?.role);
     const handleCreateShop = async (e) => {
         e.preventDefault();
         setLoading(true);
-        if(currentUser[0]?.role === 'manager'){
-          
+        if(users?.role === 'manager'){
             Swal.fire({
                 icon: "error",
                 title: "Oops...",

@@ -28,11 +28,11 @@ const Settings = () => {
                             {user?.photoURL ? <img
                                 alt='profile'
                                 src={user?.photoURL}
-                                className='mx-auto object-cover rounded-full h-28 w-28  border-4 border-blue-500 '
+                                className='mx-auto object-cover rounded-full h-28 w-28  border-4 border-white '
                             /> : <img
                                 alt='profile'
                                 src={profile}
-                                className='mx-auto object-cover rounded-full h-24 w-24  border-4 border-blue-500 '
+                                className='mx-auto object-cover rounded-full h-24 w-24  border-4 border-white '
                             />}
                         </a>
                         <p className='mt-7 py-1 px-4 text-base text-white bg-pink-500 rounded-full'>

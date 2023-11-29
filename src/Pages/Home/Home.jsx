@@ -5,6 +5,7 @@ import Banner from "./Banner/Banner";
 import 'swiper/css';
 import ShopCollection from "./Shop/ShopCollection";
 import { Helmet } from "react-helmet-async";
+import ServicesReview from "./Services/ServicesReview";
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Banner />
             <Marque />
             <ShopCollection />
+            <ServicesReview />
             <Footer />
         </div>
     );

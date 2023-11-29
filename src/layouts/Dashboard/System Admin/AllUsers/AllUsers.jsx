@@ -50,7 +50,7 @@ const AllUsers = () => {
     }
 
     return (
-        <div>
+        <div className="w-[90%] mx-auto">
             <div className="flex justify-evenly my-4">
                 <h3 className="text-xl font-bold text-center">Manage All Users</h3>
                 <h3 className="text-xl font-bold text-center">Total Users : {users?.length}</h3>

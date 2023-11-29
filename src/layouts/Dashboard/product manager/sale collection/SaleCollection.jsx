@@ -1,8 +1,14 @@
-import useSaleCollection from "../../../../Hooks/useSaleCollection";
+import { Link } from "react-router-dom";
+import useAllPayments from "../../../../Hooks/useAllPayments";
+import useAuth from "../../../../Hooks/useAuth";
+import { MdEdit } from "react-icons/md";
+import { FaTrashAlt } from "react-icons/fa";
 
 const SaleCollection = () => {
-    const [products,isLoading] = useSaleCollection();
-    console.log(products,isLoading);
+    const {user} = useAuth();
+    const [salesData, , ] = useAllPayments();
+  //  const items = salesData?.filter(item => item?.email == user?.email);
+    console.log(salesData);
     return (
         <div className="w-[90%] mx-auto bg-base-100">
             <h3 className="text-3xl text-center font-bold mt-12 mb-5 flex items-center justify-center gap-2">Sale Collection🧨🧨</h3>
@@ -29,9 +35,9 @@ const SaleCollection = () => {
                             <th>Sold to Customer </th>
                         </tr>
                     </thead>
-                    {/* <tbody className="text-[18px] my-3 font-medium">
-                        {
-                            products?.map((product, index) =>
+                    <tbody className="text-[18px] my-3 font-medium">
+                        {/* {
+                            items?.map((product, index) =>
                                 <tr key={product._id}>
                                     <th>{index + 1}</th>
                                     <th>
@@ -52,8 +58,8 @@ const SaleCollection = () => {
                                         <button onClick={() => handleDelete(product)} className="btn bg-red-500 text-2xl text-white hover:text-black"><FaTrashAlt></FaTrashAlt></button>
                                     </td>
                                 </tr>)
-                        }
-                    </tbody> */}
+                        } */}
+                    </tbody>
                 </table>
             </div>
 
