@@ -134,7 +134,7 @@ const CheckoutForm = () => {
                     <button onClick={goback} type='button' className='btn bg-pink-500 text-[18px] px-10 hover:text-red-500 my-5'>
                         Cancel
                     </button>
-                    <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-xl px-10 hover:text-green-500 my-5" type="submit" >{
+                    <button disabled={!stripe || !clientSecret} className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-xl px-10 hover:text-green-500 my-5" type="submit" >{
                     isLoading ? <ImSpinner9 className='m-auto animate-spin' size={24} /> : `Pay $${totalPrice}`
                     }</button>
                 </div>

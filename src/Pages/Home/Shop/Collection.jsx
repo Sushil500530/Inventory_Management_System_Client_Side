@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Collection = ({ product }) => {
     const { _id, product_name, product_cost, image, discount, description, location, owner_name } = product || {};
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl border">
             <figure className=' w-full h-[300px]'>
                 <img src={image} alt="image" className='w-full h-full rounded-md' />
             </figure>

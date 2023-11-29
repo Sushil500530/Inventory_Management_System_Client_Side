@@ -5,6 +5,7 @@ import ShopCollection from "./Shop/ShopCollection";
 import { Helmet } from "react-helmet-async";
 import Contribute from "./Services/Contribute";
 import ContactMe from "./Services/ContactMe";
+import OtherSection from "../Other/OtherSection";
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <Marque />
             <ShopCollection />
             <Contribute />
+            <OtherSection />
             <ContactMe />
             <Footer />
         </div>

@@ -44,7 +44,7 @@ const ContactMe = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-1/2 ">
                         <div className="form">
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-5 space-y-3">
@@ -59,12 +59,12 @@ const ContactMe = () => {
                                     <label className="font-medium mt-3">Message*</label>
                                     <textarea placeholder="Send Message..." className="textarea textarea-bordered textarea-md w-full "required ></textarea>
                                 </div>
-                                <button onClick={handleSubmit} className="btn mt-5">CONTACT ME</button>
+                                <button className="btn mt-5">CONTACT ME</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div className="w-1/2 ">
+                <div className="w-1/2 hidden lg:block">
                     <div className='rounded-l-lg' style={{ height: '100%', width: '100%' }}>
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: '' }}
