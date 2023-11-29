@@ -1,8 +1,7 @@
 import {Parallax } from "react-parallax";
-import img2 from '../../../assets/image/banner/banner.jpg'
 import img from '../../../assets/image/banner/banner2.jpg'
 
-const ServicesReview = () => {
+const Contribute = () => {
 
     return (
         <div className="w-full my-12">
@@ -13,10 +12,8 @@ const ServicesReview = () => {
                 bgImageAlt="car"
                 strength={-200}
                 style={{
-                   borderRadius:'10px'
-                   
-                }}
-            >
+                   borderRadius:'10px' 
+                }} >
                 <div className=" h-[700px] hero" >
                     <div className="hero-overlay bg-opacity-60"></div>
                     <div className="hero-content text-center text-neutral-content">
@@ -32,4 +29,4 @@ const ServicesReview = () => {
     );
 };
 
-export default ServicesReview;
+export default Contribute;

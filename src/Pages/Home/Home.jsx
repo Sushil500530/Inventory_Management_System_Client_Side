@@ -1,11 +1,10 @@
 import Footer from "../Footer/Footer";
 import Marque from "./Marque/Marque";
 import Banner from "./Banner/Banner";
-// import Swiper styles
-import 'swiper/css';
 import ShopCollection from "./Shop/ShopCollection";
 import { Helmet } from "react-helmet-async";
-import ServicesReview from "./Services/ServicesReview";
+import Contribute from "./Services/Contribute";
+import ContactMe from "./Services/ContactMe";
 
 const Home = () => {
     return (
@@ -16,7 +15,8 @@ const Home = () => {
             <Banner />
             <Marque />
             <ShopCollection />
-            <ServicesReview />
+            <Contribute />
+            <ContactMe />
             <Footer />
         </div>
     );
