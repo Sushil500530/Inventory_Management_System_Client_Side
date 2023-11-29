@@ -2,24 +2,24 @@ import { Link } from "react-router-dom";
 import Logo from "../../components/Header/Navbar/Logo";
 const Footer = () => {
     return (
-        <footer className="footer bg-base-300 text-base-content py-20">
+        <footer className="footer bg-gray-600 text-gray-300 py-20">
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full items-center gap-10 lg:gap-4 justify-center px-8">
                 <Link to='/'>
                     <Logo />
                 </Link>
                 <nav className="flex flex-col text-center justify-center space-y-3">
                     <header className="footer-title">Services</header>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <a className="link link-hover hover:text-blue-500">Branding</a>
+                    <a className="link link-hover hover:text-blue-500">Design</a>
+                    <a className="link link-hover hover:text-blue-500">Marketing</a>
+                    <a className="link link-hover hover:text-blue-500">Advertisement</a>
                 </nav>
                 <nav className="flex flex-col justify-center space-y-3 items-center">
                     <header className="footer-title">Company</header>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <a className="link link-hover hover:text-blue-500">About us</a>
+                    <a className="link link-hover hover:text-blue-500">Contact</a>
+                    <a className="link link-hover hover:text-blue-500">Jobs</a>
+                    <a className="link link-hover hover:text-blue-500">Press kit</a>
                 </nav>
                 <nav className="flex flex-col items-center justify-center">
                     <header className="footer-title">Social</header>
