@@ -72,7 +72,7 @@ const Register = () => {
         }
     }
     return (
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-7 gap-5">
+        <div className="container mx-auto dark:text-white mb-12 flex flex-col lg:flex-row items-center justify-center mt-7 gap-5">
             <div className="bg-[url('https://i.ibb.co/zF7chZF/Animated-Shape.png')] w-full lg:w-3/5 h-[80vh] bg-no-repeat bg-center bg-cover flex items-center justify-center p-5">
                 <img src={loginImage} alt="" />
             </div>
@@ -81,12 +81,12 @@ const Register = () => {
                     <h1 className="text-3xl font-bold mb-12">Please Register Now🤠</h1>
                     <div className="space-y-3">
                         <label className="text-xl  font-medium">Username </label>
-                        <input type="text"  {...register("name", { required: true })} name="name" className="input bg-[#F3F3F3] w-full border-blue-500" id="" placeholder="Enter your name" />
+                        <input type="text"  {...register("name", { required: true })} name="name" className="input bg-[#F3F3F3] w-full border-blue-500 dark:text-black" id="" placeholder="Enter your name" />
                         {errors.name && <span className="text-red-500">name is required</span>}
                     </div>
                     <div className="space-y-3">
                         <label className="text-xl  font-medium">Email Address</label>
-                        <input type="email"  {...register("email", { required: true })} name="email" className="input bg-[#F3F3F3] w-full border-blue-500" id="" placeholder="Enter your username or address" />
+                        <input type="email"  {...register("email", { required: true })} name="email" className="input bg-[#F3F3F3] w-full border-blue-500 dark:text-black" id="" placeholder="Enter your username or address" />
                         {errors.email && <span className="text-red-500">email is required</span>}
                     </div>
                     <div className="space-y-3">
@@ -94,7 +94,7 @@ const Register = () => {
                         <input type="password"  {...register("password", {
                             required: true, minLength: 6,
                             pattern: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
-                        })} name="password" className="input bg-[#F3F3F3] w-full border-blue-500" id="" placeholder="Enter your password" />
+                        })} name="password" className="input bg-[#F3F3F3] w-full border-blue-500 dark:text-black" id="" placeholder="Enter your password" />
                         {errors.password?.type === "minLength" && <span className="text-red-600">password length must be 6 characters or longer</span>}
                         {errors.password?.type === 'pattern' && <span className="text-red-600">password must have one uppercase one lowercase one number and one special character</span>}
                         {errors.password?.type === "required" && (

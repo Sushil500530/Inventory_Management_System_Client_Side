@@ -40,7 +40,7 @@ const DashboardMenubar = ({ isActive }) => {
     return (
         <>
             <div className={`z-10 flex flex-col justify-between pb-6 lg:relative absolute bg-gray-100 overflow-x-hidden w-64 h-screen space-y-6 px-2 inset-y-0 left-0 transform ${isActive && '-translate-x-full '
-                } lg:translate-x-0 transition duration-200 ease-in-out`}>
+                } lg:translate-x-0 dark:text-white dark:bg-zinc-800 transition duration-200 ease-in-out`}>
                 <div className="menu pt-8">
                     <div className="mb-5">
                         <HanadleToggleBtn toggler={toggleHandler} />
@@ -64,7 +64,7 @@ const DashboardMenubar = ({ isActive }) => {
                     <div className="divider"></div>
                     <MenuList address={'/'} linkTitle={'Go Home'} icon={AiFillHome} />
                     <MenuList address={'settings'} linkTitle={'Settings'} icon={FcSettings} />
-                    <button onClick={handleLogout} className='flex w-full items-center px-4 py-2 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform' >
+                    <button onClick={handleLogout} className='flex w-full items-center px-4 py-2 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 dark:text-white dark:hover:text-black transform' >
                         <GrLogout className='w-5 h-5' />
                         <span className='mx-4 font-medium'>Logout</span>
                     </button>

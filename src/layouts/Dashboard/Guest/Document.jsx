@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 const Document = () => {
     return (
-        <div className="w-[90%] mx-auto text-center">
+        <div className="w-[90%] mx-auto text-center dark:text-white">
               <Helmet>
                 <title>Promotion | Dashboard</title>
             </Helmet>

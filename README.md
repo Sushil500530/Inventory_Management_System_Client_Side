@@ -1,6 +1,6 @@
  assignment12_category_0018
 
-live show Project : https://inventory-managememt.web.app
+live show Project : https://clever-reading.surge.sh
 
 <b>Inventory Management System Project Uses Components</b>
 - @smastrom/react-rating

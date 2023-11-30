@@ -60,7 +60,7 @@ const ProductManager = () => {
         return <Loading />
     }
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
             <h2 className="text-3xl font-bold text-center mt-12 mb-5 flex items-center justify-center gap-2">My Product <IconBar icon={FaShoppingBasket} /></h2>
             <div className="flex pl-5 items-center justify-between gap-4 flex-col md:flex-row lg:flex-row h-12 md:border md:border-black lg:border lg:border-black my-8">
                 <div>

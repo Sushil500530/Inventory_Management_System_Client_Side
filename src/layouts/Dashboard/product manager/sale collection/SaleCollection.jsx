@@ -11,7 +11,7 @@ const SaleCollection = () => {
   //  const items = salesData?.filter(item => item?.email == user?.email);
     console.log(salesData);
     return (
-        <div className="w-[90%] mx-auto bg-base-100">
+        <div className="w-full lg:w-[90%] mx-auto bg-base-100 dark:text-white dark:bg-zinc-800">
               <Helmet>
                 <title>Sale Collection | Inventory M</title>
             </Helmet>

@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 const PaymentSection = () => {
     const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GET_AWAY_KEY)
     return (
-        <div>
+        <div className="dark:text-white">
               <Helmet>
                 <title>Payment Section | Inventory M</title>
             </Helmet>

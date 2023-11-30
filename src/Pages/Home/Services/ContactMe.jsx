@@ -27,7 +27,7 @@ const ContactMe = () => {
 
     return (
         <section className="w-full my-12 ">
-            <h3 className="text-4xl font-bold mb-12 flex items-center justify-center"><span className="text-fuchsia-500">Contact...</span> <MdContactSupport /></h3>
+            <h3 className="text-4xl font-bold mb-12 dark:text-white flex items-center justify-center"><span className="text-fuchsia-500">Contact...</span> <MdContactSupport /></h3>
             <div className='w-full h-[60vh] gap-8 flex flex-col lg:flex-row'>
                 <div className="w-full lg:w-1/2 flex bg-gray-600 text-gray-400 px-6 rounded-r-lg py-12 items-center justify-center space-y-3 gap-5">
                     <div className="w-1/2">

@@ -29,13 +29,13 @@ const Sidebar = () => {
     return (
         <div className="flex flex-col gap-2">
             <button onClick={changeTheme} className="bg-transparent btn-sm hover:text-blue-500 transition my-5 flex items-center justify-center">
-                                {mode === "dark" ? <BsSun className='text-3xl'></BsSun> : <MdOutlineDarkMode className='text-3xl'></MdOutlineDarkMode>}
-                            </button>
+                {mode === "dark" ? <BsSun className='text-3xl text-white'></BsSun> : <MdOutlineDarkMode className='text-3xl'></MdOutlineDarkMode>}
+            </button>
             <MenuList address={'/'} linkTitle={'Home'} icon={FaHome} />
             <MenuList address={'create-shop'} linkTitle={'Create Shop'} icon={FaShopify} />
             <span >
                 <a href="https://youtu.be/PohSjXM5AW0?si=i0hNC7blRfrCwgz7" target="_blank" >
-                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <MdOutlineSlideshow className="w-6 h-10 mr-1"></MdOutlineSlideshow>Watch Demo</span>
+                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform dark:hover:text-black dark:text-white  hover:bg-gray-300   text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <MdOutlineSlideshow className="w-6 h-10 mr-1"></MdOutlineSlideshow>Watch Demo</span>
                 </a>
             </span>
             {
@@ -45,18 +45,18 @@ const Sidebar = () => {
                 users?.role === "manager" && <MenuList address={'dashboard/manager'} linkTitle={'Dashboard'} icon={MdDashboardCustomize} />
             }
 
-            {
+{
                 users?.role === "manager" && <Link to={'dashboard/guest-home'}>
-                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span>
+                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] dark:text-white transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge bg-transparent border-0 py-[2px] absolute text-fuchsia-600  left-8 top-1 text-2xl">{products?.length}</div></span>
                 </Link>
             }
             {
                 users?.role === "guest" && <Link to={'dashboard/guest-home'}>
-                    <span className=" items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span>
+                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300 dark:text-white  hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge bg-transparent border-0 py-[2px] absolute text-fuchsia-600  left-8 top-1 text-2xl">{products?.length}</div></span>
                 </Link>
             }
             {
-                user ? <><div className="avatar flex items-center flex-col justify-start">
+                user ? <><div className="avatar dark:text-white flex items-center flex-col justify-start">
                     <h3 className="mr-5 font-medium"> {user?.displayName}</h3>
                     <div className="w-12 mr-3 mt-3 rounded-full mb-5 ring ring-primary ring-offset-base-100 ring-offset-2">
                         {user?.photoURL ? <img src={user?.photoURL} alt="photo" /> : <img src={profile} alt="photo" />}

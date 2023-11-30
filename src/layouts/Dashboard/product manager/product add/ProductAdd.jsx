@@ -78,7 +78,7 @@ const ProductAdd = () => {
         }
     }
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Product Added | Inventory M</title>
             </Helmet>
@@ -89,14 +89,14 @@ const ProductAdd = () => {
                         <div className='space-y-6'>
                             <div className="flex flex-col md:flex-row lg:flex-row w-full gap-4">
                                 <div className='space-y-1 w-full'>
-                                    <label htmlFor='location' className='block text-black font-medium'>
+                                    <label htmlFor='location' className='dark:text-white block text-black font-medium'>
                                         Product Name
                                     </label>
                                     <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 ' name='product_name' id='product_name' type='text' placeholder='Product name' required
                                     />
                                 </div>
                                 <div className='space-y-1 w-full'>
-                                    <label htmlFor='location' className='block text-black font-medium'>
+                                    <label htmlFor='location' className='block dark:text-white text-black font-medium'>
                                         Location
                                     </label>
                                     <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 '
@@ -113,14 +113,14 @@ const ProductAdd = () => {
                             </div>
                             <div className="flex flex-col md:flex-row lg:flex-row w-full gap-4">
                                 <div className='space-y-1 w-full'>
-                                    <label htmlFor='location' className='block text-black font-medium'>
+                                    <label htmlFor='location' className='block dark:text-white text-black font-medium'>
                                         Quantity
                                     </label>
                                     <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 ' name='quantity' id='quantity' type='number' placeholder='Enter quantiey' required
                                     />
                                 </div>
                                 <div className='space-y-1 w-full'>
-                                    <label htmlFor='location' className='block text-black font-medium'>
+                                    <label htmlFor='location' className='block dark:text-white text-black font-medium'>
                                         Product Cost
                                     </label>
                                     <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 ' name='product_cost' id='product_cost' type='number' placeholder='Product Cost' required
@@ -139,14 +139,14 @@ const ProductAdd = () => {
                             </div>
                             <div className="flex flex-col md:flex-row lg:flex-row w-full gap-4">
                                 <div className='space-y-1 w-full'>
-                                    <label htmlFor='location' className='block text-black font-medium'>
+                                    <label htmlFor='location' className='block dark:text-white text-black font-medium'>
                                         Product Profit
                                     </label>
                                     <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 ' name='product_profit' id='product_profit' type='number' placeholder='Product Profit' required
                                     />
                                 </div>
                                 <div className='space-y-1 w-full'>
-                                    <label htmlFor='location' className='block text-black font-medium'>
+                                    <label htmlFor='location' className='block dark:text-white text-black font-medium'>
                                         Discount %
                                     </label>
                                     <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 ' name='discount' id='discount' type='number' placeholder='Discount %' required

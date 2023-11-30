@@ -110,8 +110,8 @@ const CheckoutForm = () => {
     return (
         <div>
             <h2 className="text-center text-2xl font-bold flex items-center justify-center gap-2"> Use <span className="text-fuchsia-500">Card</span> <FaRegCreditCard className="text-3xl ml-3" /></h2>
-            <form onSubmit={handlePayment} className='my-2 '>
-                <div className="border p-3 mx-12">
+            <form onSubmit={handlePayment} className='my-2 dark:text-white'>
+                <div className="border p-3 mx-12 dark:text-white">
                     <CardElement
                         options={{
                             style: {
@@ -130,7 +130,7 @@ const CheckoutForm = () => {
                     ></CardElement>
                 </div>
                 {transactionId && <p className="text-green-500 mt-5 font-medium text-center">Your Transaction id is:  {transactionId}</p>}
-                <div className='flex mt-2 justify-around'>
+                <div className='flex mt-2 justify-around '>
                     <button onClick={goback} type='button' className='btn bg-pink-500 text-[18px] px-10 hover:text-red-500 my-5'>
                         Cancel
                     </button>

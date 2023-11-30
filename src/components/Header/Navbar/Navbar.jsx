@@ -34,7 +34,7 @@ const Navbar = () => {
     return (
         <div className=" w-full dark:bg-zinc-900">
             <nav>
-                <div className="navbar lg:flex-row flex flex-row-reverse items-center shadow justify-between">
+                <div className="navbar dark:text-white lg:flex-row flex flex-row-reverse items-center shadow justify-between">
                     <div className="flex-none lg:hidden">
                         <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -43,16 +43,19 @@ const Navbar = () => {
                     <Link to='/'>
                         <Logo />
                     </Link>
-                    <div className="flex-none hidden lg:block">
+                    <div className="flex-none hidden lg:block dark:text-white">
                         <div className="flex items-center gap-2 dark:text-white">
-                        <button onClick={changeTheme} className="bg-transparent btn-sm hover:text-blue-500 transition mr-5 flex items-center justify-center">
+                            <button onClick={changeTheme} className="bg-transparent btn-sm hover:text-blue-500 transition mr-5 flex items-center justify-center">
                                 {mode === "dark" ? <BsSun className='text-3xl'></BsSun> : <MdOutlineDarkMode className='text-3xl'></MdOutlineDarkMode>}
                             </button>
-                            <MenuList address={'/'} linkTitle={'Home'} icon={FaHome} />
-                            <MenuList address={'create-shop'} linkTitle={'Create Shop'} icon={FaShopify} />
+                            <span className="dark:text-white">
+                                <MenuList address={'/'} linkTitle={'Home'} icon={FaHome} />
+                            </span>
+                            <span className="dark:text-white">
+                                <MenuList address={'create-shop'} linkTitle={'Create Shop'} icon={FaShopify} /></span>
                             <span >
                                 <a href="https://youtu.be/PohSjXM5AW0?si=i0hNC7blRfrCwgz7" target="_blank" >
-                                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <MdOutlineSlideshow className="w-6 h-10 mr-1"></MdOutlineSlideshow>Watch Demo</span>
+                                    <span className="flex items-center text-[18px] font-medium px-4 py-1 dark:text-white dark:hover:text-black duration-200 transform  hover:bg-gray-300   text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <MdOutlineSlideshow className="w-6 h-10 mr-1"></MdOutlineSlideshow>Watch Demo</span>
                                 </a>
                             </span>
                             {
@@ -64,12 +67,12 @@ const Navbar = () => {
 
                             {
                                 users?.role === "manager" && <Link to={'dashboard/guest-home'}>
-                                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span>
+                                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600 py-1 -right-1 -top-1 text-2xl">{products?.length}</div></span>
                                 </Link>
                             }
                             {
                                 users?.role === "guest" && <Link to={'dashboard/guest-home'}>
-                                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span>
+                                    <span className="flex items-center text-[18px] font-medium px-4 py-2 duration-200 transform  hover:bg-gray-300   hover:text-gray-700 rounded hover:-translate-y-[2px] transition-all ease-in hover:scale-100 "> <FaCartArrowDown className="w-6 h-10 mr-1"></FaCartArrowDown > <div className="badge bg-transparent border-0 py-[2px] absolute text-fuchsia-600  -right-1 -top-1 text-2xl">{products?.length}</div></span>
                                 </Link>
                             }
                             {

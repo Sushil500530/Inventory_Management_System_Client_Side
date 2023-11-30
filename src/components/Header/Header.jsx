@@ -10,13 +10,13 @@ const Header = ({ children }) => {
                 <Navbar />
                 {children}
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side ">
                 <label
                     htmlFor="my-drawer-3"
                     aria-label="close sidebar"
                     className="drawer-overlay"
                 ></label>
-                <div className="menu p-4 w-80 h-screen py-2 bg-white">
+                <div className="menu p-4 w-80 dark:bg-zinc-800 h-screen py-2 bg-white">
                     <Sidebar />
                 </div>
             </div>

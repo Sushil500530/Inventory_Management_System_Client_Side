@@ -53,7 +53,7 @@ const Router = createBrowserRouter([
             {
                 path:'product-details/:id',
                 element: <PrivetRoute><SingleProduct /></PrivetRoute>,
-                loader : ({params}) => fetch(`http://localhost:5000/all-product/${params.id}`)
+                loader : ({params}) => fetch(`https://server-side-beta-bay.vercel.app/all-product/${params.id}`)
             },
         ]
     },
@@ -139,7 +139,7 @@ const Router = createBrowserRouter([
     {
         path:"/updated-product/:id",
         element:<PrivetRoute><UpdateProduct /></PrivetRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+        loader: ({params}) => fetch(`https://server-side-beta-bay.vercel.app/product/${params.id}`)
     },
 ])
 

@@ -9,7 +9,7 @@ const ManagerShop = () => {
         return <Loading />
     }
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Manager Shop | Admin Home</title>
             </Helmet>

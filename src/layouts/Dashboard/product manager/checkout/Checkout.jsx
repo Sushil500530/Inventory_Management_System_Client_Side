@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 const Checkout = () => {
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Checkout | Inventory M</title>
             </Helmet>

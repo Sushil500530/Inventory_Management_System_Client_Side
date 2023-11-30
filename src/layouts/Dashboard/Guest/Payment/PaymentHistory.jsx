@@ -21,7 +21,7 @@ const PaymentHistory = () => {
     }
     console.log(payments);
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Payment History | Dashboard</title>
             </Helmet>

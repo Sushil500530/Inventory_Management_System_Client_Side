@@ -79,7 +79,7 @@ const Login = () => {
 
 
     return (
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-7 gap-5">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center mt-7 gap-5 dark:text-white mb-12">
             <div className="bg-[url('https://i.ibb.co/zF7chZF/Animated-Shape.png')] w-full min-h-[50vh] lg:w-3/5 lg:h-[80vh] bg-no-repeat bg-center bg-cover flex items-center justify-center p-5">
                 <img src={loginImage} alt="" />
             </div>
@@ -87,13 +87,13 @@ const Login = () => {
                 <form onSubmit={handleSubmit(handleLogin)} className="p-5 space-y-3">
                     <h1 className="text-3xl font-bold mb-12">Please Login🤔</h1>
                     <div className="space-y-3">
-                        <label className="text-xl  font-medium">Username or Email Address</label>
-                        <input type="email" name="email"  {...register("email", { required: true })} className="input bg-[#F3F3F3] w-full border-blue-500" id="" placeholder="Enter your username or address" />
+                        <label className="text-xl font-medium">Username or Email Address</label>
+                        <input type="email" name="email"  {...register("email", { required: true })} className="input bg-[#F3F3F3] w-full border-blue-500 dark:text-zinc-800" id="" placeholder="Enter your username or address" />
                         {errors.email && <span className="text-red-500">email is required</span>}
                     </div>
                     <div className="space-y-3">
-                        <label className="text-xl  font-medium">Password</label>
-                        <input type="password" name="password" {...register("password", { required: true })} className="input bg-[#F3F3F3] w-full border-blue-500" id="" placeholder="Enter your password" />
+                        <label className="text-xl font-medium">Password</label>
+                        <input type="password" name="password" {...register("password", { required: true })} className="input bg-[#F3F3F3] w-full border-blue-500 dark:text-black" id="" placeholder="Enter your password" />
                         {errors.password && <span className="text-red-500">password is required</span>}
                     </div>
                     <p className="text-base font-medium my-8">Please register at first. Go to <Link to='/register' className="text-blue-500 underline">SIGN UP</Link></p>

@@ -7,7 +7,6 @@ import ChartSection from "./ChartSection";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useRole from "../../../../Hooks/useRole";
-import Footer from "../../../../Pages/Footer/Footer";
 
 
 const AdminHome = () => {
@@ -22,7 +21,7 @@ const AdminHome = () => {
     })
 
     return (
-        <div className="w-[90%] mx-auto mb-12">
+        <div className="w-[90%] mx-auto mb-12 dark:text-white">
             <div className="w-full h-[70vh]">
                 <h2 className="text-2xl font-bold capitalize text-center my-5"><span className="text-4xl font-bold text-fuchsia-500">Hi</span>, Wellcome 🎁🎉<br />
                    <span className=" text-fuchsia-500">{users?.name}</span>
@@ -56,7 +55,7 @@ const AdminHome = () => {
                 <div className="flex gap-8 my-12">
                     <ChartSection />
                 </div>
-                <Footer />
+              
             </div>
         </div>
     );

@@ -11,13 +11,13 @@ const Settings = () => {
         return <Loading />
     }
     return (
-        <div className="w-full">
+        <div className="w-full dark:text-white">
             <h2 className="text-3xl text-center my-8 font-bold">Settings for User👨‍🎓</h2>
             <div className='flex justify-center w-full items-center mt-10 '>
                 <Helmet>
                     <title>Setting | Inventory Management</title>
                 </Helmet>
-                <div className='bg-white shadow-lg rounded-2xl w-full mx-auto lg:w-3/5 pb-12'>
+                <div className='bg-white dark:bg-black dark:text-white shadow-lg rounded-2xl w-full mx-auto lg:w-3/5 pb-12'>
                     <img
                         alt='profile'
                         src='https://i.ibb.co/G7b6P45/23d0f4f631a8071556d0d2b93cac1584.gif'
@@ -39,17 +39,17 @@ const Settings = () => {
                             {users?.role.toUpperCase()}
                         </p>
                         <div className='p-5 mt-4 rounded-lg w-full'>
-                            <div className='w-full text-gray-700 space-y-3 flex items-center flex-col md:flex-row lg:flex-row  md:justify-between lg:justify-evenly'>
+                            <div className='w-full dark:text-white text-gray-700 space-y-3 flex items-center flex-col md:flex-row lg:flex-row  md:justify-between lg:justify-evenly'>
                                 <div>
-                                    <p className=' text-[18px]'>
+                                    <p className=' text-[18px] dark:text-white'>
                                         Name
-                                        <p className='font-bold text-xl text-black capitalize'>
+                                        <p className='font-bold text-xl dark:text-white text-black capitalize'>
                                             {user?.displayName}
                                         </p>
                                     </p>
                                     <p className='text-[18px]'>
                                         Email
-                                        <p className='font-bold text-xl text-black capitalize'>{user?.email}</p>
+                                        <p className='font-bold text-xl dark:text-white text-black capitalize'>{user?.email}</p>
                                     </p>
                                 </div>
                                 <div>

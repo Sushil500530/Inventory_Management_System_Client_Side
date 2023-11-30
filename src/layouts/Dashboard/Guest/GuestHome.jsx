@@ -46,7 +46,7 @@ const GuestHome = () => {
         return <Loading />
     }
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Guest Home | Dashboard</title>
             </Helmet>

@@ -21,7 +21,7 @@ const AdminSaleSummary = () => {
     }
 
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Sale Summary | Admin Home</title>
             </Helmet>

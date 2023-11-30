@@ -43,7 +43,7 @@ const ProductSection = () => {
         return <Loading />
     }
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Product Section | Inventory M</title>
             </Helmet>

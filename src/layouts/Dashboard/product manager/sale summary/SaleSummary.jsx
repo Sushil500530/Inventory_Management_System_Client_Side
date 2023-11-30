@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 const SaleSummary = () => {
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto dark:text-white">
               <Helmet>
                 <title>Sale Summary | Inventory M</title>
             </Helmet>
