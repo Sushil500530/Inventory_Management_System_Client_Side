@@ -15,14 +15,14 @@ const ShopCollection = () => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        fetch('https://server-side-beta-bay.vercel.app/products-count')
+        fetch('http://localhost:5000/products-count')
             .then(res => res.json())
             .then(data => setCount(data.count))
     }, [])
 console.log('count data is --->',count);
     useEffect(() => {
         setLoading(true)
-        fetch(`https://server-side-beta-bay.vercel.app/all-products?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`http://localhost:5000/all-products?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setProducts(data))
         setLoading(false)

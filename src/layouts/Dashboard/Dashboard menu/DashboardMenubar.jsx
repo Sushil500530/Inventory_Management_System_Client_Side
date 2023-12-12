@@ -39,7 +39,7 @@ const DashboardMenubar = ({ isActive }) => {
 
     return (
         <>
-            <div className={`z-10 flex flex-col justify-between pb-6 lg:relative absolute bg-gray-100 overflow-x-hidden w-64 h-screen space-y-6 px-2 inset-y-0 left-0 transform ${isActive && '-translate-x-full '
+            <div className={`z-10 fixed flex flex-col justify-between pb-6  bg-gray-100 overflow-x-hidden w-64 h-screen space-y-6 px-2 inset-y-0 left-0 transform ${isActive && '-translate-x-full '
                 } lg:translate-x-0 dark:text-white dark:bg-zinc-800 transition duration-200 ease-in-out`}>
                 <div className="menu pt-8">
                     <div className="mb-5">

@@ -9,10 +9,11 @@ import { imageUpload } from "../../api/auth";
 import Swal from "sweetalert2";
 import useRole from "../../Hooks/useRole";
 import { Helmet } from "react-helmet-async";
+import Footer from "../Footer/Footer";
 
 const CreateShop = () => {
     const axiosSecure = useAxiosSecure();
-    const {user} = useAuth()
+    const { user } = useAuth()
     const [loading, setLoading] = useState(false);
     const [users] = useRole();
 
@@ -20,13 +21,13 @@ const CreateShop = () => {
     const handleCreateShop = async (e) => {
         e.preventDefault();
         setLoading(true);
-        if(users?.role === 'manager'){
+        if (users?.role === 'manager') {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: "Your Shop is Existed in!",
-              });
-         return setLoading(false)
+            });
+            return setLoading(false)
         }
         const form = e.target;
         const shop_name = form.shop_name.value;
@@ -35,28 +36,28 @@ const CreateShop = () => {
         const location = form.location.value;
         try {
             const loadImage = await imageUpload(image);
-            const create_shop = { 
+            const create_shop = {
                 shop_name,
-                 shop_logo:loadImage?.data?.display_url, 
-                 description, 
-                 location,
-                 owner: user?.displayName,
-                 email:user?.email,
-                 role:'manager',
-             };
-             console.log(create_shop);
+                shop_logo: loadImage?.data?.display_url,
+                description,
+                location,
+                owner: user?.displayName,
+                email: user?.email,
+                role: 'manager',
+            };
+            console.log(create_shop);
             await axiosSecure.patch('/managers', create_shop)
-            .then(res => {
-                if (res.data?.insertedId) {
-                    setLoading(false)
-                    Swal.fire({
-                        title: "Create Successfull!",
-                        text: "You clicked the button!",
-                        icon: "success",
-                        timer: 1000
-                    });
-                }
-            })
+                .then(res => {
+                    if (res.data?.insertedId) {
+                        setLoading(false)
+                        Swal.fire({
+                            title: "Create Successfull!",
+                            text: "You clicked the button!",
+                            icon: "success",
+                            timer: 1000
+                        });
+                    }
+                })
         }
         catch (error) {
             setLoading(false)
@@ -64,75 +65,78 @@ const CreateShop = () => {
         }
     }
     return (
-        <div className="container mx-auto mb-12 ">
-              <Helmet>
-                <title>Create Shop | Inventory M </title>
-            </Helmet>
-            <h2 className="text-2xl font-bold text-center dark:text-white my-12 flex items-center justify-center gap-2">Create a New Shop <IconBar icon={MdAddShoppingCart} /></h2>
-            <form onSubmit={handleCreateShop}>
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 dark:text-white'>
-                    <div className='space-y-6'>
-                        <div className='space-y-1'>
-                            <label htmlFor='location' className='block text-black font-medium dark:text-white'>
-                                Shop Name
-                            </label>
-                            <input
-                                className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 '
-                                name='shop_name' id='shop_name' type='text' placeholder='shop name' required
-                            />
-                        </div>
-                        <div className=' p-4 bg-white w-full m-auto rounded-lg'>      
-                            <div className=' bg-white w-full m-auto rounded-lg'>
-                                <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg overflow-hidden'>
-                                    <div className='flex flex-col w-max dark:text-white mx-auto text-center overflow-hidden'>
-                                        <input type='file' name='image' id='image' accept='image/*' className="file-input file-input-secondary focus:border-none " />
+        <>
+            <div className="container mx-auto mb-12 lg:mb-20 ">
+                <Helmet>
+                    <title>Create Shop | Inventory M </title>
+                </Helmet>
+                <h2 className="text-2xl font-bold text-center dark:text-white my-12 flex items-center justify-center gap-2">Create a New Shop <IconBar icon={MdAddShoppingCart} /></h2>
+                <form onSubmit={handleCreateShop}>
+                    <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 dark:text-white'>
+                        <div className='space-y-6'>
+                            <div className='space-y-1'>
+                                <label htmlFor='location' className='block text-black font-medium dark:text-white'>
+                                    Shop Name
+                                </label>
+                                <input
+                                    className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 '
+                                    name='shop_name' id='shop_name' type='text' placeholder='shop name' required
+                                />
+                            </div>
+                            <div className=' p-4 bg-white w-full m-auto rounded-lg'>
+                                <div className=' bg-white w-full m-auto rounded-lg'>
+                                    <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg overflow-hidden'>
+                                        <div className='flex flex-col w-max dark:text-white mx-auto text-center overflow-hidden'>
+                                            <input type='file' name='image' id='image' accept='image/*' className="file-input file-input-secondary focus:border-none " />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div className='space-y-1 '>
+                                <label htmlFor='description' className='block font-medium'>
+                                    Description
+                                </label>
+                                <textarea id='description' className='block focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border rounded-md input border-blue-400  ' name='description' placeholder="Write description"
+                                ></textarea>
+                            </div>
                         </div>
-                        <div className='space-y-1 '>
-                            <label htmlFor='description' className='block font-medium'>
-                                Description
-                            </label>
-                            <textarea id='description' className='block focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border rounded-md input border-blue-400  ' name='description' placeholder="Write description"
-                            ></textarea>
+                        <div className='space-y-6'>
+                            <div className='space-y-1'>
+                                <label htmlFor='title' className='block dark:text-white text-black font-medium'>
+                                    Shop Owmer Name
+                                </label>
+                                <input defaultValue={user?.displayName} className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='name' id='name' type='text' placeholder='name' required
+                                />
+                            </div>
+                            <div className='space-y-1'>
+                                <label htmlFor='title' className='block text-black font-medium dark:text-white'>
+                                    Shop Owmer Email
+                                </label>
+                                <input defaultValue={user?.email} className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='email' id='email' type='email' placeholder='email' required
+                                />
+                            </div>
+                            <div className='space-y-1'>
+                                <label htmlFor='location' className='block text-black font-medium dark:text-white'>
+                                    Location
+                                </label>
+                                <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 '
+                                    name='location' id='location' type='text' placeholder='Location' required
+                                />
+                            </div>
+                            <button type='submit' className='btn w-full p-3 mt-5 text-[18px] text-center font-medium hover:text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-purple-500 to-pink-500 text-black '
+                            >
+                                {loading ? (
+                                    <FaSpinner className='m-auto animate-spin' size={24} />
+                                ) : (
+                                    'Create Shop'
+                                )}
+                            </button>
                         </div>
                     </div>
-                    <div className='space-y-6'>
-                        <div className='space-y-1'>
-                            <label htmlFor='title' className='block dark:text-white text-black font-medium'>
-                                Shop Owmer Name
-                            </label>
-                            <input defaultValue={user?.displayName} className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='name' id='name' type='text' placeholder='name' required
-                            />
-                        </div>
-                        <div className='space-y-1'>
-                            <label htmlFor='title' className='block text-black font-medium dark:text-white'>
-                                Shop Owmer Email
-                            </label>
-                            <input defaultValue={user?.email} className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400  ' name='email' id='email' type='email' placeholder='email' required
-                            />
-                        </div>
-                        <div className='space-y-1'>
-                            <label htmlFor='location' className='block text-black font-medium dark:text-white'>
-                                Location
-                            </label>
-                            <input className='w-full px-4 py-3 text-gray-800 border rounded-md input border-blue-400 '
-                                name='location' id='location' type='text' placeholder='Location' required
-                            />
-                        </div>
-                        <button type='submit' className='btn w-full p-3 mt-5 text-[18px] text-center font-medium hover:text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-purple-500 to-pink-500 text-black '
-                        >
-                            {loading ? (
-                                <FaSpinner className='m-auto animate-spin' size={24} />
-                            ) : (
-                                'Create Shop'
-                            )}
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+            <Footer />
+        </>
     );
 };
 

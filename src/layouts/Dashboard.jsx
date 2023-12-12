@@ -37,7 +37,9 @@ const Dashboard = () => {
                     <Outlet></Outlet>
                 </div>
             </div>
+            <div className="ml-0 lg:ml-36">
             <Footer />
+            </div>
         </Container >
     );
 };
